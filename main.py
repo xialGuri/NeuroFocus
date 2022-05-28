@@ -1,19 +1,23 @@
-import pygame;
+import pygame
 
+# 2. 게임창 옵션 설정
+WINDOWWIDTH = 640
+WINDOWHEIGHT = 480
 
-# 화면 크기 설정
-screen_width = 480 # 가로 크기
-screen_height = 640 # 세로 크기
-screen = pygame.display.set_mode((screen_width, screen_height))
+# 3. 게임 내 필요한 설정
+clock = pygame.time.Clock()
 
-FLASHSPEED = 500 # in milliseconds
-FLASHDELAY = 200 # in milliseconds
-BUTTONSIZE = 200
-BUTTONGAPSIZE = 20
-TIMEOUT = 4 #버튼을 누르지 않으면 4초후 게임 종료
+buttonsize = 200
+buttongapsize = 20
 
-XMARGIN = int((screen_width - (2 * BUTTONSIZE) - BUTTONGAPSIZE) / 2)
-YMARGIN = int((screen_height - (2 * BUTTONSIZE) - BUTTONGAPSIZE) / 2)
+XMARGIN = int((WINDOWWIDTH - (2 * buttonsize) - buttongapsize) / 2)
+YMARGIN = int((WINDOWHEIGHT - (2 * buttonsize) - buttongapsize) / 2)
+
+# Rect objects for each of the four buttons
+YELLOWRECT = pygame.Rect(XMARGIN, YMARGIN, buttonsize, buttonsize)
+BLUERECT   = pygame.Rect(XMARGIN + buttonsize + buttongapsize, YMARGIN, buttonsize, buttonsize)
+REDRECT    = pygame.Rect(XMARGIN, YMARGIN + buttonsize + buttongapsize, buttonsize, buttonsize)
+GREENRECT  = pygame.Rect(XMARGIN + buttonsize + buttongapsize, YMARGIN + buttonsize + buttongapsize, buttonsize, buttonsize)
 
 #                R    G    B
 WHITE        = (255, 255, 255)
@@ -28,40 +32,59 @@ BRIGHTYELLOW = (255, 255,   0)
 YELLOW       = (155, 155,   0)
 DARKGRAY     = ( 40,  40,  40)
 
-# Rect objects for each of the four buttons
-YELLOWRECT = pygame.Rect(XMARGIN, YMARGIN, BUTTONSIZE, BUTTONSIZE)
-BLUERECT = pygame.Rect(XMARGIN + BUTTONSIZE + BUTTONGAPSIZE, YMARGIN, BUTTONSIZE, BUTTONSIZE)
-REDRECT = pygame.Rect(XMARGIN, YMARGIN + BUTTONSIZE + BUTTONGAPSIZE, BUTTONSIZE, BUTTONSIZE)
-GREENRECT = pygame.Rect(XMARGIN + BUTTONSIZE + BUTTONGAPSIZE, YMARGIN + BUTTONSIZE + BUTTONGAPSIZE, BUTTONSIZE, BUTTONSIZE)
-bgColor = BLACK
 
+# 4. 메인 이벤트
 def main():
-    pygame.init()  # 초기화 (반드시 필요)
-    global FPSCLOCK, DISPLAYSURF, BASICFONT, BEEP1, BEEP2, BEEP3, BEEP4
-    FPSCLOCK = pygame.time.Clock()
-    DISPLAYSURF = pygame.display.set_mode((screen_width, screen_height))
-    pygame.display.set_caption("neuroFocus")  # 게임 이름
+    k = 0
+    global screen
+    #  게임 초기화
+    pygame.init()
 
-    BASICFONT = pygame.font.Font("freesansbold.ttf", 16)
-    infoSurf = BASICFONT.render("Match the Patter by Clicking on the button or using the Q,W,A,S keys.", 1, DARKGRAY)
-    infoRect = infoSurf.get_rect()
-    infoRect.topleft = (10, screen_height - 25)
-    pattern = []  # 색깔 패턴을 저장한다.
-    currentStep = 0  # 플레이어가 다음에 눌러야 하는 색깔
-    lastClickTime = 0  # 플레이어가 이전 버튼을 누른 시간
-    score = 0
-    # 이 밑에 값이 False면 현재 시뮬레이트가 패턴을 보여주고 있는 상태이다.
-    # True 면 버튼 클릭 기다리고 있다.
-    waitingForInput = False
+    # 게임 사이즈
+    size = [WINDOWWIDTH, WINDOWHEIGHT]
+    screen = pygame.display.set_mode(size)
 
-    ## pygame 은 while 문에서 게임이 실행된다
-    while True:
-        clickedButton = None
-        DISPLAYSURF.fill(bgColor)
+    # 게임 이름 셋팅
+    pygame.display.set_caption("NeruoFocus")
+
+    # Loop until the user clicks the close button.
+    done = False
+    clock = pygame.time.Clock()
+
+    # 실제 게임 시작
+    while not done:
+        # Hz 설정 (가로 안에는 원하는 Hz를 적으면 된다)
+        clock.tick(10)
+
+        # 각종 입력 감지
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                done=True
+
+        screen.fill (WHITE)
         drawButtons()
 
-def drawSquare():
-    pygame.draw.rect(DISPLAYSURF, YELLOW,YELLOWRECT)
-    pygame.draw.rect(DISPLAYSURF, BLUE,   BLUERECT)
-    pygame.draw.rect(DISPLAYSURF, RED,    REDRECT)
-    pygame.draw.rect(DISPLAYSURF, GREEN,  GREENRECT)
+        # # 입력, 시간에 따른 변화
+        # k += 1
+        # if k % 2 == 0:
+        #     color = BLACK
+        # else:
+        #     color = WHITE
+        #
+        # # 그리기
+        # screen.fill(color)
+
+        # 업데이트
+        pygame.display.flip()
+
+    # 게임 종료
+    pygame.quit()
+
+def drawButtons():
+    pygame.draw.rect(screen, YELLOW, YELLOWRECT)
+    pygame.draw.rect(screen, BLUE,   BLUERECT)
+    pygame.draw.rect(screen, RED,    REDRECT)
+    pygame.draw.rect(screen, GREEN,  GREENRECT)
+
+if __name__ == "__main__":
+    main()
