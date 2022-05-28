@@ -1,12 +1,16 @@
 import pygame
 
-# 2. 게임창 옵션 설정
+# 게임창 옵션 설정
 WINDOWWIDTH = 640
 WINDOWHEIGHT = 480
 
-# 3. 게임 내 필요한 설정
-clock = pygame.time.Clock()
+# 게임 내 필요한 설정
+hz1 = 50;
+hz2 = 10;
+hz3 = 10;
+hz4 = 10;
 
+clock = pygame.time.Clock()
 buttonsize = 200
 buttongapsize = 20
 
@@ -49,32 +53,18 @@ def main():
 
     # Loop until the user clicks the close button.
     done = False
-    clock = pygame.time.Clock()
 
     # 실제 게임 시작
     while not done:
-        # Hz 설정 (가로 안에는 원하는 Hz를 적으면 된다)
-        clock.tick(10)
 
         # 각종 입력 감지
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
-                done=True
+                done = True
 
-        screen.fill (WHITE)
+        screen.fill(WHITE)
         drawButtons()
-
-        # # 입력, 시간에 따른 변화
-        # k += 1
-        # if k % 2 == 0:
-        #     color = BLACK
-        # else:
-        #     color = WHITE
-        #
-        # # 그리기
-        # screen.fill(color)
-
-        # 업데이트
+        flashButtonAnimation()
         pygame.display.flip()
 
     # 게임 종료
@@ -85,6 +75,29 @@ def drawButtons():
     pygame.draw.rect(screen, BLUE,   BLUERECT)
     pygame.draw.rect(screen, RED,    REDRECT)
     pygame.draw.rect(screen, GREEN,  GREENRECT)
+
+def flashButtonAnimation(animationSpeed=50):
+    origSurf =screen.copy()
+    flashSurf = pygame.Surface((buttonsize,buttonsize))
+    flashSurf = flashSurf.convert_alpha()
+    r1, g1, b1 = BRIGHTYELLOW
+    r2, g2, b2 = BRIGHTBLUE
+    r3, g3, b3 = BRIGHTRED
+    r4, g4, b4 = BRIGHTGREEN
+    rectangle = GREENRECT
+
+
+    for start, end, step in((0,255,1),(255,0,-1)): #애니메이션 루프
+        for alpha in range(start,end,animationSpeed*step):
+            screen.blit(origSurf,(0,0))
+            flashSurf.fill((r1,g1,b1,alpha))
+            flashSurf.fill((r2, g2, b2, alpha))
+            flashSurf.fill((r3, g3, b3, alpha))
+            flashSurf.fill((r4, g4, b4, alpha))
+            screen.blit(flashSurf,rectangle.topleft)
+            pygame.display.update()
+            clock.tick(hz1)
+    screen.blit(origSurf,(0,0))
 
 if __name__ == "__main__":
     main()
