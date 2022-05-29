@@ -1,29 +1,16 @@
 import pygame
+from pygame.locals import *
+import ctypes
 
-# 게임창 옵션 설정
-WINDOWWIDTH = 640
-WINDOWHEIGHT = 480
-
-# 게임 내 필요한 설정
+# hz 설정
 hz1 = 1;
 hz2 = 10;
 hz3 = 10;
 hz4 = 10;
 
 clock = pygame.time.Clock()
-buttonsize = 200
-buttongapsize = 20
 
-XMARGIN = int((WINDOWWIDTH - (2 * buttonsize) - buttongapsize) / 2)
-YMARGIN = int((WINDOWHEIGHT - (2 * buttonsize) - buttongapsize) / 2)
-
-# Rect objects for each of the four buttons
-YELLOWRECT = pygame.Rect(XMARGIN, YMARGIN, buttonsize, buttonsize)
-BLUERECT   = pygame.Rect(XMARGIN + buttonsize + buttongapsize, YMARGIN, buttonsize, buttonsize)
-REDRECT    = pygame.Rect(XMARGIN, YMARGIN + buttonsize + buttongapsize, buttonsize, buttonsize)
-GREENRECT  = pygame.Rect(XMARGIN + buttonsize + buttongapsize, YMARGIN + buttonsize + buttongapsize, buttonsize, buttonsize)
-
-
+# 색깔지정 변수
 #                R    G    B
 WHITE        = (255, 255, 255)
 BLACK        = (  0,   0,   0)
@@ -41,14 +28,35 @@ DARKGRAY     = ( 40,  40,  40)
 
 # 4. 메인 이벤트
 def main():
-    k = 0
-    global screen
+
+    # 전역 변수 셋팅 (아래의 변수들을 전역변수로 다른 함수에 사용 가능)
+    global screen, infoObject, WINDOWWIDTH, WINDOWHEIGHT, YELLOWRECT, BLUERECT, REDRECT, GREENRECT, buttonsize, buttongapsize
+
     #  게임 초기화
     pygame.init()
 
+    #창 크기 (전체 게임 화면)
+    infoObject = pygame.display.Info()
+    WINDOWWIDTH = infoObject.current_w
+    WINDOWHEIGHT = infoObject.current_h
+
+    # 각 이미지의 크기 설정
+    buttonsize = 200
+    buttongapsize = 20
+
+    XMARGIN = int((infoObject.current_w - (2 * buttonsize) - buttongapsize) / 2)
+    YMARGIN = int((infoObject.current_h - (2 * buttonsize) - buttongapsize) / 2)
+
+    # Rect objects for each of the four buttons
+    YELLOWRECT = pygame.Rect(XMARGIN, YMARGIN, buttonsize, buttonsize)
+    BLUERECT = pygame.Rect(XMARGIN + buttonsize + buttongapsize, YMARGIN, buttonsize, buttonsize)
+    REDRECT = pygame.Rect(XMARGIN, YMARGIN + buttonsize + buttongapsize, buttonsize, buttonsize)
+    GREENRECT = pygame.Rect(XMARGIN + buttonsize + buttongapsize, YMARGIN + buttonsize + buttongapsize, buttonsize, buttonsize)
+
+
+
     # 게임 사이즈
-    size = [WINDOWWIDTH, WINDOWHEIGHT]
-    screen = pygame.display.set_mode(size)
+    screen = pygame.display.set_mode((WINDOWWIDTH, WINDOWHEIGHT))
 
     # 게임 이름 셋팅
     pygame.display.set_caption("NeruoFocus")
@@ -67,7 +75,7 @@ def main():
         screen.fill(WHITE)
         drawButtons()
         loadImag()
-        flashButtonAnimation()
+        # flashButtonAnimation()
         pygame.display.flip()
 
     # 게임 종료
@@ -76,9 +84,9 @@ def main():
 
 def loadImag():
     # 가운데 이미지 불러오기
-    img = pygame.image.load("C:/Users/asjms/NeuroFocus/plus.png")
-    img = pygame.transform.scale(img, (95, 95))
-    screen.blit(img, (270, 192))
+    img = pygame.image.load("image/plus.png")
+    img = pygame.transform.scale(img, (25, 25))
+    screen.blit(img, (WINDOWWIDTH/2, WINDOWHEIGHT/2))
     pygame.display.update()
     
     
@@ -89,7 +97,7 @@ def drawButtons():
     pygame.draw.rect(screen, GREEN,  GREENRECT)
 
 def flashButtonAnimation(animationSpeed=50):
-    origSurf =screen.copy()
+    origSurf = screen.copy()
     flashSurf = pygame.Surface((buttonsize,buttonsize))
     flashSurf = flashSurf.convert_alpha()
     r1, g1, b1 = BRIGHTYELLOW
