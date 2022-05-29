@@ -5,7 +5,7 @@ WINDOWWIDTH = 640
 WINDOWHEIGHT = 480
 
 # 게임 내 필요한 설정
-hz1 = 50;
+hz1 = 1;
 hz2 = 10;
 hz3 = 10;
 hz4 = 10;
@@ -22,6 +22,8 @@ YELLOWRECT = pygame.Rect(XMARGIN, YMARGIN, buttonsize, buttonsize)
 BLUERECT   = pygame.Rect(XMARGIN + buttonsize + buttongapsize, YMARGIN, buttonsize, buttonsize)
 REDRECT    = pygame.Rect(XMARGIN, YMARGIN + buttonsize + buttongapsize, buttonsize, buttonsize)
 GREENRECT  = pygame.Rect(XMARGIN + buttonsize + buttongapsize, YMARGIN + buttonsize + buttongapsize, buttonsize, buttonsize)
+
+sdf
 
 #                R    G    B
 WHITE        = (255, 255, 255)
@@ -85,19 +87,23 @@ def flashButtonAnimation(animationSpeed=50):
     r3, g3, b3 = BRIGHTRED
     r4, g4, b4 = BRIGHTGREEN
     rectangle = GREENRECT
-
-
-    for start, end, step in((0,255,1),(255,0,-1)): #애니메이션 루프
-        for alpha in range(start,end,animationSpeed*step):
-            screen.blit(origSurf,(0,0))
-            flashSurf.fill((r1,g1,b1,alpha))
-            flashSurf.fill((r2, g2, b2, alpha))
-            flashSurf.fill((r3, g3, b3, alpha))
-            flashSurf.fill((r4, g4, b4, alpha))
-            screen.blit(flashSurf,rectangle.topleft)
-            pygame.display.update()
-            clock.tick(hz1)
-    screen.blit(origSurf,(0,0))
+    screen.blit(origSurf, (0, 0))
+    flashSurf.fill((r1, g1, b1))
+    screen.blit(flashSurf, rectangle.topleft)
+    pygame.display.update()
+    clock.tick(1)
+    screen.blit(origSurf, (0, 0))
+    # for start, end, step in ((0,255,1),(255,0,-1)): #애니메이션 루프
+    #     for alpha in range(start, end, animationSpeed*step):
+    #         screen.blit(origSurf,(0,0))
+    #         flashSurf.fill((r1,g1,b1,alpha))
+    #         # flashSurf.fill((r2, g2, b2, alpha))
+    #         # flashSurf.fill((r3, g3, b3, alpha))
+    #         # flashSurf.fill((r4, g4, b4, alpha))
+    #         screen.blit(flashSurf,rectangle.topleft)
+    #         pygame.display.update()
+    #         clock.tick(1)
+    # screen.blit(origSurf,(0,0))
 
 if __name__ == "__main__":
     main()
