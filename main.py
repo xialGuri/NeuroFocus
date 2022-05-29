@@ -23,7 +23,6 @@ BLUERECT   = pygame.Rect(XMARGIN + buttonsize + buttongapsize, YMARGIN, buttonsi
 REDRECT    = pygame.Rect(XMARGIN, YMARGIN + buttonsize + buttongapsize, buttonsize, buttonsize)
 GREENRECT  = pygame.Rect(XMARGIN + buttonsize + buttongapsize, YMARGIN + buttonsize + buttongapsize, buttonsize, buttonsize)
 
-sdf
 
 #                R    G    B
 WHITE        = (255, 255, 255)
