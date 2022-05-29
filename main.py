@@ -19,10 +19,16 @@ YELLOW       = (155, 155,   0)
 DARKGRAY     = ( 40,  40,  40)
 
 
+BackCard = pygame.image.load("image/BackOfCard.jpeg")
+BackCard = pygame.transform.scale(BackCard, (300, 300))
+BackCard_RCT = BackCard.get_rect()
+
 # 4. 메인 이벤트
 def main():
     # 전역 변수 셋팅 (아래의 변수들을 다른 함수에 사용 가능)
-    global screen, infoObject, WINDOWWIDTH, WINDOWHEIGHT, buttonsize, buttongapsize, XMARGIN, YMARGIN
+    global screen, infoObject, WINDOWWIDTH, \
+        WINDOWHEIGHT, buttonsize, buttongapsize, XMARGIN, \
+        YMARGIN, FirstRECT, SecondRECT, ThirdRECT, FourthRECT
 
     # 게임 초기화
     pygame.init()
@@ -38,6 +44,11 @@ def main():
 
     XMARGIN = int((infoObject.current_w - (2 * buttonsize) - buttongapsize) / 2)
     YMARGIN = int((infoObject.current_h - (2 * buttonsize) - buttongapsize) / 2)
+
+    FirstRECT = pygame.Rect(XMARGIN, YMARGIN, buttonsize, buttonsize)
+    SecondRECT = pygame.Rect(XMARGIN + buttonsize + buttongapsize, YMARGIN, buttonsize, buttonsize)
+    ThirdRECT = pygame.Rect(XMARGIN, YMARGIN + buttonsize + buttongapsize, buttonsize, buttonsize)
+    FourthRECT = pygame.Rect(XMARGIN + buttonsize + buttongapsize, YMARGIN + buttonsize + buttongapsize, buttonsize, buttonsize)
 
     # 게임 사이즈
     screen = pygame.display.set_mode((WINDOWWIDTH, WINDOWHEIGHT))
@@ -56,10 +67,10 @@ def main():
                 done = True
 
         screen.fill(WHITE)
-        drawBackCards()
+        # drawBackCards()
         loadCenterImg()
-        # flashButtonAnimation()
-
+        flashButtonAnimation()
+        # flashButtonAnimation2()
         pygame.display.flip()
 
     # 게임 종료
@@ -72,52 +83,29 @@ def loadCenterImg():
     img = pygame.transform.scale(img, (25, 25))
     screen.blit(img, (WINDOWWIDTH / 2 - 13, WINDOWHEIGHT / 2 - 13))
     pygame.display.update()
-    
+
 # 그림 뒷면
 def drawBackCards():
     #  사진 띄우기
-    BackCard = pygame.image.load("image/BackOfCard.jpeg")
-    BackCard = pygame.transform.scale(BackCard, (300, 300))
-    BackCard_RCT = BackCard.get_rect()
     screen.blit(BackCard, (XMARGIN - 180, YMARGIN - 40))
     screen.blit(BackCard, (XMARGIN + 180 + buttonsize + buttongapsize, YMARGIN - 40))
     screen.blit(BackCard, (XMARGIN - 180, YMARGIN + buttonsize + buttongapsize - 53))
     screen.blit(BackCard, (XMARGIN + 180 + buttonsize + buttongapsize, YMARGIN + buttonsize + buttongapsize - 53))
 
 # 깜빡임 조정 함수
-def flashButtonAnimation(animationSpeed=50):
+def flashButtonAnimation(animationSpeed=1000):
     origSurf = screen.copy()
-    flashSurf = pygame.Surface((buttonsize,buttonsize))
-    flashSurf = flashSurf.convert_alpha()
-    img = pygame.image.load("image/BackOfCard.jpeg")
-    img = pygame.transform.scale(img, (buttonsize, buttonsize))
-    screen.blit(img, (10,10))
-    clock.tick(1)
-    ## origSurf = screen.copy()
-    # flashSurf = pygame.Surface((buttonsize,buttonsize))
-    # flashSurf = flashSurf.convert_alpha()
-    # r1, g1, b1 = BRIGHTYELLOW
-    # r2, g2, b2 = BRIGHTBLUE
-    # r3, g3, b3 = BRIGHTRED
-    # r4, g4, b4 = BRIGHTGREEN
-    # rectangle = GREENRECT
-    # screen.blit(origSurf, (0, 0))
-    # flashSurf.fill((r1, g1, b1))
-    # screen.blit(flashSurf, rectangle.topleft)
-    # pygame.display.update()
-    # clock.tick(1)
-    # screen.blit(origSurf, (0, 0))
-    # for start, end, step in ((0,255,1),(255,0,-1)): #애니메이션 루프
-    #     for alpha in range(start, end, animationSpeed*step):
-    #         screen.blit(origSurf,(0,0))
-    #         flashSurf.fill((r1,g1,b1,alpha))
-    #         # flashSurf.fill((r2, g2, b2, alpha))
-    #         # flashSurf.fill((r3, g3, b3, alpha))
-    #         # flashSurf.fill((r4, g4, b4, alpha))
-    #         screen.blit(flashSurf,rectangle.topleft)
-    #         pygame.display.update()
-    #         clock.tick(1)
-    # screen.blit(origSurf,(0,0))
+    screen.blit(BackCard, (XMARGIN - 180, YMARGIN - 40))
+    pygame.display.update()
+    clock.tick(10)
+    screen.blit(origSurf, (0, 0))
+
+# def flashButtonAnimation2(animationSpeed=1000):
+#     origSurf = screen.copy()
+#     screen.blit(BackCard, (XMARGIN + 180 + buttonsize + buttongapsize, YMARGIN - 40))
+#     pygame.display.update()
+#     clock.tick(1)
+#     screen.blit(origSurf, (0, 0))
 
 if __name__ == "__main__":
     main()
