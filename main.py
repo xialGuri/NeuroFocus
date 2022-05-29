@@ -37,6 +37,7 @@ YELLOW       = (155, 155,   0)
 DARKGRAY     = ( 40,  40,  40)
 
 
+
 # 4. 메인 이벤트
 def main():
     k = 0
@@ -64,12 +65,22 @@ def main():
 
         screen.fill(WHITE)
         drawButtons()
+        loadImag()
         flashButtonAnimation()
         pygame.display.flip()
 
     # 게임 종료
     pygame.quit()
 
+
+def loadImag():
+    # 가운데 이미지 불러오기
+    img = pygame.image.load("C:/Users/asjms/NeuroFocus/plus.png")
+    img = pygame.transform.scale(img, (95, 95))
+    screen.blit(img, (270, 192))
+    pygame.display.update()
+    
+    
 def drawButtons():
     pygame.draw.rect(screen, YELLOW, YELLOWRECT)
     pygame.draw.rect(screen, BLUE,   BLUERECT)
