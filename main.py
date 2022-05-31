@@ -128,7 +128,7 @@ def flashButtonAnimation4(animationSpeed=1000):
     origSurf = screen.copy()
     screen.blit(BackCard, (XMARGIN + 180 + buttonsize + buttongapsize, YMARGIN + buttonsize + buttongapsize - 53))
     pygame.display.update()
-    clock.tick(2)
+    clock.tick(3)
     screen.blit(origSurf, (0, 0))
 
 if __name__ == "__main__":
