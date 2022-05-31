@@ -20,7 +20,10 @@ DARKGRAY     = ( 40,  40,  40)
 
 
 BackCard = pygame.image.load("image/BackOfCard.jpeg")
+CheckerBoard = pygame.image.load("image/CheckerBoard.jpeg")
+
 BackCard = pygame.transform.scale(BackCard, (300, 300))
+CheckerBoard = pygame.transform.scale(BackCard, (300, 300))
 BackCard_RCT = BackCard.get_rect()
 
 # 4. 메인 이벤트
@@ -28,7 +31,8 @@ def main():
     # 전역 변수 셋팅 (아래의 변수들을 다른 함수에 사용 가능)
     global screen, infoObject, WINDOWWIDTH, \
         WINDOWHEIGHT, buttonsize, buttongapsize, XMARGIN, \
-        YMARGIN, FirstRECT, SecondRECT, ThirdRECT, FourthRECT
+        YMARGIN, FirstRECT, SecondRECT, ThirdRECT, FourthRECT, DISPLAYSURF \
+        CheckerBoard, BackCard
 
     # 게임 초기화
     pygame.init()
@@ -52,7 +56,6 @@ def main():
 
     # 게임 사이즈
     screen = pygame.display.set_mode((WINDOWWIDTH, WINDOWHEIGHT))
-
     # 게임 이름 셋팅
     pygame.display.set_caption("NeruoFocus")
 
@@ -69,8 +72,15 @@ def main():
         screen.fill(WHITE)
         # drawBackCards()
         loadCenterImg()
-        flashButtonAnimation()
+        #flashButtonAnimation()
+
+        img_names = [BackCard, CheckerBoard]
+        all_imgs = {}
+        for img in img_names:
+            all_imgs[img] = pygame.image.load(img)
         # flashButtonAnimation2()
+        # flashButtonAnimation3()
+        # flashButtonAnimation4()
         pygame.display.flip()
 
     # 게임 종료
@@ -83,8 +93,6 @@ def loadCenterImg():
     img = pygame.transform.scale(img, (25, 25))
     screen.blit(img, (WINDOWWIDTH / 2 - 13, WINDOWHEIGHT / 2 - 13))
     pygame.display.update()
-
-s
 
 # 그림 뒷면
 def drawBackCards():
@@ -99,17 +107,29 @@ def flashButtonAnimation(animationSpeed=1000):
     origSurf = screen.copy()
     screen.blit(BackCard, (XMARGIN - 180, YMARGIN - 40))
     pygame.display.update()
-    clock.tick(10)
+    clock.tick(1)
     screen.blit(origSurf, (0, 0))
 
-# def flashButtonAnimation2(animationSpeed=1000):
-#     origSurf = screen.copy()
-#     screen.blit(BackCard, (XMARGIN + 180 + buttonsize + buttongapsize, YMARGIN - 40))
-#     pygame.display.update()
-#     clock.tick(1)
-#     screen.blit(origSurf, (0, 0))
+def flashButtonAnimation2(animationSpeed=1000):
+    origSurf = screen.copy()
+    screen.blit(BackCard, (XMARGIN + 180 + buttonsize + buttongapsize, YMARGIN - 40))
+    pygame.display.update()
+    clock.tick(1)
+    screen.blit(origSurf, (0, 0))
+
+def flashButtonAnimation3(animationSpeed=1000):
+    origSurf = screen.copy()
+    screen.blit(BackCard, (XMARGIN - 180, YMARGIN + buttonsize + buttongapsize - 53))
+    pygame.display.update()
+    clock.tick(1)
+    screen.blit(origSurf, (0, 0))
+
+def flashButtonAnimation4(animationSpeed=1000):
+    origSurf = screen.copy()
+    screen.blit(BackCard, (XMARGIN + 180 + buttonsize + buttongapsize, YMARGIN + buttonsize + buttongapsize - 53))
+    pygame.display.update()
+    clock.tick(3)
+    screen.blit(origSurf, (0, 0))
 
 if __name__ == "__main__":
     main()
-
-##test
