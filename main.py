@@ -84,6 +84,8 @@ def loadCenterImg():
     screen.blit(img, (WINDOWWIDTH / 2 - 13, WINDOWHEIGHT / 2 - 13))
     pygame.display.update()
 
+s
+
 # 그림 뒷면
 def drawBackCards():
     #  사진 띄우기
