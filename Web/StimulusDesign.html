@@ -10,10 +10,10 @@
   <hr />
 </header>
 <script>
-  var time = 2359; //기준시간 작성
+  var time = 1; //기준시간 작성
   var min = "";
   var sec = "";
-  //setInterval
+  setInterval
   var x = setInterval(function () {
     min = parseInt(time / 60);
     sec = time % 60;
@@ -24,13 +24,13 @@
     //타임아웃 시
     if (time < 0) {
       clearInterval(x);
-      window.location.href = './StimulusDesign.html'
+      window.location.href = './PreAnalyise.html'
     }
   }, 1000)
+
 </script>
 
 <body>
-
   <div style="position:relative; margin-top: 120px;" class="timerbox">
     <div style="font-size: 20px;">
       남은시간
@@ -40,17 +40,17 @@
     </div>
   </div>
   <div class="img-container">
-    <img class="img-items" style="position: relative; left: -130px" src="./image/CheckerBoard7hz.gif" width="120"
-      height="120" />
-    <!-- <img
-        class="img-items"
-        style=""
-        src="./image/Plus.png"
-        width="40"
-        height="40"
-      /> -->
-    <img class="img-items" style="position: relative; left: 130px" src="./image/CheckerBoard13hz.gif" width="120"
-      height="120" />
+    <div class="img-items1">
+      <img style="position: relative; left: -130px" src="./image/CheckerBoard7hz.gif" width="200" height="200" />
+      <!-- <img class="blink1" src="./image/light2.png" width="120" height="120" /> -->
+      <!-- <img class="blink1" src="./image/light2.png" width="160" height="160" /> -->
+    </div>
+    <img class="img-items" style="" src="./image/Plus.png" width="40" height="40" />
+    <div class="img-items2">
+      <img style="position: relative; left: 130px" src="./image/CheckerBoard13hz.gif" width="200" height="200" />
+      <!-- <img class="blink2" src="./image/light2.png" width="120" height="120" /> -->
+      <!-- <img class="blink1" src="./image/light2.png" width="160" height="160" /> -->
+    </div>
   </div>
 </body>
 
