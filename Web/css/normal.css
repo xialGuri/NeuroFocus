@@ -11,10 +11,13 @@
 
 .img-items1 {
   margin: auto;
+  animation: blink-effect 0.14285714285s step-end infinite;
 }
 
+/* 0.14285714285s */
 .img-items2 {
   margin: auto;
+  animation: blink-effect 0.07692307692s step-end infinite;
 }
 
 .main-container {
@@ -52,18 +55,20 @@
 /* 크기 작게 */
 .blink1 {
   position: absolute;
-  animation: blink-effect 0.5s step-end infinite;
+  animation: blink-effect 0.60s step-end infinite;
   width: 150px;
   height: 150px;
-  margin-top: -17px;
-  margin-left: -270px;
+  margin-top: 27px;
+  margin-left: -310px;
 }
 
 
 .blink2 {
   position: absolute;
-  animation: blink-effect 0.5s step-end infinite;
+  animation: blink-effect 0.45s step-end infinite;
   width: 150px;
   height: 150px;
-  margin-top: -17px;
+  margin-top: 27px;
+  margin-left: -35px;
+
 }
