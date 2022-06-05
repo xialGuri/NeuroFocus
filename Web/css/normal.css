@@ -9,6 +9,17 @@
   margin: auto;
 }
 
+.img-items1 {
+  margin: auto;
+  animation: blink-effect 0.14285714285s step-end infinite;
+}
+
+/* 0.14285714285s */
+.img-items2 {
+  margin: auto;
+  animation: blink-effect 0.07692307692s step-end infinite;
+}
+
 .main-container {
   text-align: center;
   margin-top: 200px;
@@ -33,4 +44,31 @@
 #timer {
   text-align: center;
   font-size: 20px;
+}
+
+@keyframes blink-effect {
+  50% {
+    opacity: 0;
+  }
+}
+
+/* 크기 작게 */
+.blink1 {
+  position: absolute;
+  animation: blink-effect 0.60s step-end infinite;
+  width: 150px;
+  height: 150px;
+  margin-top: 27px;
+  margin-left: -310px;
+}
+
+
+.blink2 {
+  position: absolute;
+  animation: blink-effect 0.45s step-end infinite;
+  width: 150px;
+  height: 150px;
+  margin-top: 27px;
+  margin-left: -35px;
+
 }
