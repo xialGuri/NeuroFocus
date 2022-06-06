@@ -20,7 +20,7 @@
       //타임아웃 시
       if (time < 0) {
         clearInterval(x);
-        window.location.href = "./MainPage.html";
+        // window.location.href = "./MainPage.html";
       }
     }, 1000);
   </script>
@@ -30,30 +30,35 @@
     </h1>
   </header>
   <body>
-    <div class="timerbox" style="position: relative; margin-top: 121.6px">
-      <div style="font-size: 20px; color: azure">남은시간</div>
-      <div id="timer">0:00</div>
+    <div style="font-size: 30px; margin-top: 100px" class="main-container">
+      두 그림의 틀린 부분을 찾아서 특징을 기억하세요.
+      <br />
+      시간은 15초 입니다.
     </div>
-    <div class="img-container">
-      <div class="img-items1-ani">
+    <div class="img-container" style="margin-top: 40px">
+      <div class="img-items1">
         <img
-          style="position: relative; left: -130px"
-          src="./image/Red.png"
-          width="200"
-          height="200"
+          style="position: relative; left: 70px"
+          src="./image/Game1-1.png"
+          width="372"
+          height="254"
         />
         <!-- <img class="blink1" src="./image/light2.png" width="160" height="160" /> -->
       </div>
       <!-- <img class="img-items" style="" src="./image/Plus.png" width="40" height="40" /> -->
-      <div class="img-items2-ani">
+      <div class="img-items2">
         <img
-          style="position: relative; left: 130px"
-          src="./image/Blue.png"
-          width="200"
-          height="200"
+          style="position: relative; left: -70px"
+          src="./image/Game1-2.png"
+          width="374"
+          height="254"
         />
         <!-- <img class="blink2" src="./image/light2.png" width="160" height="160" /> -->
       </div>
+    </div>
+    <div class="timerbox" style="width: 80px; margin-top: 30px">
+      <div style="font-size: 15px; color: azure">남은시간</div>
+      <div style="font-size: 15px" id="timer">0:00</div>
     </div>
   </body>
 </html>

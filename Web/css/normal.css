@@ -48,13 +48,18 @@ h1.sixth:hover:after {
 .img-items {
   margin: auto;
 }
-
 .img-items1 {
+  margin: auto;
+}
+.img-items2 {
+  margin: auto;
+}
+.img-items1-ani {
   margin: auto;
   animation: blink-effect 0.14285714285s step-end infinite;
 }
 
-.img-items2 {
+.img-items2-ani {
   margin: auto;
   animation: blink-effect 0.07692307692s step-end infinite;
 }
