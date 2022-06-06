@@ -7,7 +7,7 @@
   </head>
   <script>
     const newPage = () => {
-      window.location.href = "./WaitPage.html";
+      window.location.href = "./PreAnalyise.html";
     };
   </script>
   <header>
@@ -16,38 +16,54 @@
     </h1>
   </header>
   <body>
-    <div
-      style="
-        position: relative;
-        margin-top: 175px;
-        margin-left: 52px;
-        width: 423px;
-        height: 100px;
-        text-align: center;
-        font-weight: 700;
-        font-size: 44px;
-      "
-    >
-      틀린 그림 찾기
-    </div>
-    <div
-      style="
-        border-bottom: 2px solid;
-        width: 500px;
-        margin-left: 103px;
-        color: #b7b3b3;
-      "
-    ></div>
-    <div
-      style="
-        size: 20px;
-        margin-left: 99px;
-        margin-top: 31px;
-        padding-bottom: 30px;
-      "
-    >
-      NeuroFocus는 집중력으로 학업에 어려움을 <br />
-      겪고 있는 아이들에게 날개를 달아주는 서비스입니다.
+    <div class="mainPage-container">
+      <div
+        class="left-container"
+        style="margin-left: 80px; margin-top: 23px; display: inline-block"
+      >
+        <div
+          style="
+            position: relative;
+            margin-top: 175px;
+            margin-left: 48px;
+            width: 423px;
+            height: 100px;
+            text-align: center;
+            font-weight: 700;
+            font-size: 44px;
+          "
+        >
+          틀린 그림 찾기
+        </div>
+        <div
+          style="
+            border-bottom: 2px solid;
+            width: 500px;
+            margin-left: 103px;
+            color: #b7b3b3;
+          "
+        ></div>
+        <div
+          style="
+            size: 20px;
+            margin-left: 99px;
+            margin-top: 31px;
+            padding-bottom: 30px;
+          "
+        >
+          NeuroFocus는 집중력으로 학업에 어려움을 <br />
+          겪고 있는 아이들에게 날개를 달아주는 서비스입니다.
+        </div>
+      </div>
+      <div class="button_container">
+        <button
+          class="button button--winona button--border-thick button--round-l button--text-upper button--size-s button--text-thick"
+          data-text="게임 시작"
+          onclick="newPage()"
+        >
+          <span>집중력 향상하기</span>
+        </button>
+      </div>
     </div>
   </body>
 </html>

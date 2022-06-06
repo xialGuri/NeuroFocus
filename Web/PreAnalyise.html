@@ -1,27 +1,31 @@
 <!DOCTYPE html>
 <html>
-
-<head>
+  <head>
     <link rel="stylesheet" href="css/normal.css" />
     <link rel="stylesheet" href="css/bootstrap.css" />
     <meta charset="utf-8" />
-</head>
-<script>
+  </head>
+  <script>
     const newPage = () => {
-        window.location.href = './WaitPage.html'
-    }
-</script>
-<header>
-    <h1 style="text-align: center">NeuroFocus</h1>
-    <hr />
-</header>
+      window.location.href = "./WaitPage.html";
+    };
+  </script>
+  <header>
+    <h1 class="sixth" style="text-align: center; font-weight: 300">
+      NeuroFocus
+    </h1>
+  </header>
 
-<body>
-    <div class="container">
-        <button type="button" class="btn btn-success" onclick="newPage()">
-            집중력 분석 시작 하기
+  <body>
+    <div class="box">
+        <button
+          class="button button--winona button--border-thick button--round-l button--text-upper button--size-s button--text-thick"
+          data-text="측정 시작"
+          onclick="newPage()"
+        >
+          <span>뇌파 측정하기</span>
         </button>
+      </button>
     </div>
-</body>
-
+  </body>
 </html>

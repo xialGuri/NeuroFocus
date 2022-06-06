@@ -1,56 +1,59 @@
 <!DOCTYPE html>
 <html>
+  <head>
+    <link rel="stylesheet" href="css/normal.css" />
+    <link rel="stylesheet" href="css/bootstrap.css" />
+    <meta charset="utf-8" />
+  </head>
+  <script>
+    var time = 4; //기준시간 작성
+    var min = "";
+    var sec = "";
+    setInterval;
+    var x = setInterval(function () {
+      min = parseInt(time / 60);
+      sec = time % 60;
+      timer.classList.remove("preTimer");
+      document.getElementById("timer").innerHTML = min + "  :  " + sec;
+      time--;
 
-<head>
-  <link rel="stylesheet" href="css/normal.css" />
-  <meta charset="utf-8" />
-</head>
-<header>
-  <h1 style="text-align: center">NeuroFocus</h1>
-  <hr />
-</header>
-<script>
-  var time = 59; //기준시간 작성
-  var min = "";
-  var sec = "";
-  setInterval
-  var x = setInterval(function () {
-    min = parseInt(time / 60);
-    sec = time % 60;
-    timer.classList.remove('preTimer')
-    document.getElementById("timer").innerHTML = min + "  :  " + sec;
-    time--;
-
-    //타임아웃 시
-    if (time < 0) {
-      clearInterval(x);
-      window.location.href = './PreAnalyise.html'
-    }
-  }, 1000)
-</script>
-
-<body>
-  <div style="position:relative; margin-top: 120px;" class="timerbox">
-    <div style="font-size: 20px;">
-      남은시간
+      //타임아웃 시
+      if (time < 0) {
+        clearInterval(x);
+        // window.location.href = "./MainPage.html";
+      }
+    }, 1000);
+  </script>
+  <header>
+    <h1 class="sixth" style="text-align: center; font-weight: 300">
+      NeuroFocus
+    </h1>
+  </header>
+  <body>
+    <div class="timerbox" style="position: relative; margin-top: 121.6px">
+      <div style="font-size: 20px; color: azure">남은시간</div>
+      <div id="timer">0:00</div>
     </div>
-    <div id="timer">
-      0:00
+    <div class="img-container">
+      <div class="img-items1">
+        <img
+          style="position: relative; left: -130px"
+          src="./image/Red.png"
+          width="200"
+          height="200"
+        />
+        <img class="blink1" src="./image/light2.png" width="160" height="160" />
+      </div>
+      <!-- <img class="img-items" style="" src="./image/Plus.png" width="40" height="40" /> -->
+      <div class="img-items2">
+        <img
+          style="position: relative; left: 130px"
+          src="./image/Blue.png"
+          width="200"
+          height="200"
+        />
+        <img class="blink2" src="./image/light2.png" width="160" height="160" />
+      </div>
     </div>
-  </div>
-  <div class="img-container">
-    <div class="img-items1">
-      <img style="position: relative; left: -130px" src="./image/Red.png" width="200" height="200" />
-      <img class="blink1" src="./image/light2.png" width="160" height="160" />
-
-    </div>
-    <!-- <img class="img-items" style="" src="./image/Plus.png" width="40" height="40" /> -->
-    <div class="img-items2">
-      <img style="position: relative; left: 130px" src="./image/Blue.png" width="200" height="200" />
-      <img class="blink2" src="./image/light2.png" width="160" height="160" />
-
-    </div>
-  </div>
-</body>
-
+  </body>
 </html>
