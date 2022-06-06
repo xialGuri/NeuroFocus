@@ -42,7 +42,7 @@ h1.sixth:hover:after {
 /* 자극 이미지 */
 .img-container {
   display: flex;
-  margin-top: 60px;
+  margin-top: 40px;
 }
 
 .img-items {
@@ -81,7 +81,7 @@ h1.sixth:hover:after {
   border-style: solid;
   border-radius: 20px;
   border-color: azure;
-  width: 180px;
+  width: 150px;
   margin: auto;
 }
 

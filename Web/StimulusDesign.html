@@ -20,7 +20,7 @@
       //타임아웃 시
       if (time < 0) {
         clearInterval(x);
-        window.location.href = "./MainPage.html";
+        // window.location.href = "./MainPage.html";
       }
     }, 1000);
   </script>
@@ -30,9 +30,14 @@
     </h1>
   </header>
   <body>
-    <div class="timerbox" style="position: relative; margin-top: 121.6px">
-      <div style="font-size: 20px; color: azure">남은시간</div>
-      <div id="timer">0:00</div>
+    <div
+      style="font-size: 30px; margin-top: 100px; font-size: 25px"
+      class="main-container"
+    >
+      Q. 캐릭터가 모자를 쓴 것은 어떤 그림일까요?
+      <br />
+      해당하는 그림의 위치에 1분 동안
+      <span style="color: red">시선을 집중해주세요. </span>
     </div>
     <div class="img-container">
       <div class="img-items1-ani">
@@ -54,6 +59,10 @@
         />
         <!-- <img class="blink2" src="./image/light2.png" width="160" height="160" /> -->
       </div>
+    </div>
+    <div class="timerbox" style="width: 80px; margin-top: 30px">
+      <div style="font-size: 15px; color: azure">남은시간</div>
+      <div style="font-size: 15px" id="timer">0:00</div>
     </div>
   </body>
 </html>
