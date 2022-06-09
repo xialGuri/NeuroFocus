@@ -4,9 +4,11 @@
     <link rel="stylesheet" href="css/normal.css" />
     <link rel="stylesheet" href="css/bootstrap.css" />
     <meta charset="utf-8" />
+    <script src="./GameSetting.js"></script>
   </head>
   <script>
-    var time = 15; //기준시간 작성
+    //// 여기부터는 타이머 설정
+    var time = 1005; //기준시간 작성
     var min = "";
     var sec = "";
     setInterval;
@@ -23,6 +25,7 @@
         window.location.href = "./PreAnalyise.html";
       }
     }, 1000);
+    console.log("dd");
   </script>
   <header>
     <h1 class="sixth" style="text-align: center; font-weight: 300">
@@ -30,6 +33,7 @@
     </h1>
   </header>
   <body>
+    <div id="stage"></div>
     <div style="font-size: 30px; margin-top: 10%" class="main-container">
       두 그림의 틀린 부분을 찾아서 특징을 기억하세요.
       <br />
@@ -38,27 +42,42 @@
     <div class="img-container" style="margin-top: 40px">
       <div class="img-items1">
         <img
+          id="7hz"
           style="position: relative; left: 70px"
-          src="./image/Game1-1.png"
           width="372"
           height="254"
         />
-        <!-- <img class="blink1" src="./image/light2.png" width="160" height="160" /> -->
       </div>
-      <!-- <img class="img-items" style="" src="./image/Plus.png" width="40" height="40" /> -->
+
       <div class="img-items2">
         <img
+          id="13hz"
           style="position: relative; left: -70px"
-          src="./image/Game1-2.png"
           width="374"
           height="254"
         />
-        <!-- <img class="blink2" src="./image/light2.png" width="160" height="160" /> -->
       </div>
     </div>
     <div class="timerbox" style="width: 80px; margin-top: 30px">
       <div style="font-size: 15px; color: azure">남은시간</div>
       <div style="font-size: 15px" id="timer">0:00</div>
     </div>
+    <!-- 이미지 src 셋팅 자바스크립트 코드 -->
+    <script>
+      answersrc = imagesrc + "a" + ".png";
+      imagesrc = imagesrc + ".png";
+      console.log(imagesrc);
+      console.log(answersrc);
+      if (answerHz === "7hz") {
+        document.getElementById("7hz").src = answersrc;
+        document.getElementById("13hz").src = imagesrc;
+      } else if (answerHz === "13hz") {
+        document.getElementById("7hz").src = imagesrc;
+        document.getElementById("13hz").src = answersrc;
+      }
+      console.log("스테이지는:" + stage);
+      console.log("정답은:" + answerHz);
+      console.log(imagesrc);
+    </script>
   </body>
 </html>

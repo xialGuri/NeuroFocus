@@ -6,8 +6,7 @@
     <meta charset="utf-8" />
   </head>
   <script>
-    var windowWidth = window.width();
-    var windowHeight = window.height();
+    // 타이머 부분
     var time = 4; //기준시간 작성
     var min = "";
     var sec = "";
@@ -43,6 +42,9 @@
         <span style="color: red">시선을 집중해주세요. </span>
       </div>
       <div class="img-container">
+        <script>
+          time = 1;
+        </script>
         <div class="img-items1-ani">
           <img
             style="position: relative; left: -130px"
@@ -50,9 +52,8 @@
             width="200"
             height="200"
           />
-          <!-- <img class="blink1" src="./image/light2.png" width="160" height="160" /> -->
         </div>
-        <!-- <img class="img-items" style="" src="./image/Plus.png" width="40" height="40" /> -->
+
         <div class="img-items2-ani">
           <img
             style="position: relative; left: 130px"
@@ -60,7 +61,6 @@
             width="200"
             height="200"
           />
-          <!-- <img class="blink2" src="./image/light2.png" width="160" height="160" /> -->
         </div>
       </div>
       <div class="timerbox" style="width: 80px; margin-top: 30px">
