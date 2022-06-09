@@ -56,14 +56,14 @@ h1.sixth:hover:after {
 }
 .img-items1-ani {
   margin: auto;
-  animation: blink-effect 0.14285714285s step-end infinite;
+  animation: blink-effect 0s step-end infinite;
 }
-
+/* 0.14285714285s */
 .img-items2-ani {
   margin: auto;
-  animation: blink-effect 0.07692307692s step-end infinite;
+  animation: blink-effect 0s step-end infinite;
 }
-
+/* 0.07692307692 */
 .main-container {
   text-align: center;
   margin-top: 200px;
@@ -149,8 +149,6 @@ h1 {
 .button_container {
   position: absolute;
   display: inline-block;
-  margin-left: 150px;
-  margin-top: 259px;
 }
 
 /* Common button styles */
