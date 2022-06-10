@@ -3,6 +3,8 @@
   <head>
     <link rel="stylesheet" href="../css/normal.css" />
     <link rel="stylesheet" href="../css/bootstrap.css" />
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+    <link rel="icon" href="/favicon.ico" type="image/x-icon" />
     <meta charset="utf-8" />
     <script src="../js/GameData.js"></script>
   </head>
@@ -13,7 +15,7 @@
     };
 
     //// 여기부터는 타이머 설정
-    var time = 10; //기준시간 작성
+    var time = 2; //기준시간 작성
     var min = "";
     var sec = "";
     setInterval;
@@ -46,7 +48,7 @@
         style="font-size: 30px; margin-top: 10%; font-size: 25px"
         class="main-container"
       >
-        <span id="question">ㅇㅇ</span>
+        <span id="question"></span>
         <br />
         해당하는 그림의 위치에 1분 동안
         <span style="color: red">시선을 집중해주세요. </span>
@@ -93,12 +95,12 @@
       console.log("문제는?" + GameQuestionsData.lev1.ques[quesIndex - 1]);
       if (stage === "1") {
         var question = GameQuestionsData.lev1.ques[quesIndex - 1];
-        document.getElementById("question").innerHTML = "Q." + question;
       } else if (stage === "2") {
         var question = GameQuestionsData.lev2.ques[quesIndex - 1];
       } else if (stage === "3") {
         var question = GameQuestionsData.lev3.ques[quesIndex - 1];
       }
+      document.getElementById("question").innerHTML = "Q." + question;
     </script>
   </body>
 </html>

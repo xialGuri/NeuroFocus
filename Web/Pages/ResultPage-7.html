@@ -5,6 +5,7 @@
     <link rel="stylesheet" href="../css/bootstrap.css" />
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
     <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+    <script src="../js/GameData.js"></script>
     <meta charset="utf-8" />
   </head>
   <script type="text/javascript">
@@ -13,20 +14,25 @@
       window.location.href = "./MainPage-1.html";
     };
 
+    //재도전 버튼
+    // const onClickRetry = () => {
+    //   window.location.href = "./GamePage-2.html";
+    // };
+
+    var selectedHz;
+
     //로컬 텍스트 파일 읽는 함수
     var rawFile = new XMLHttpRequest();
     rawFile.open("GET", "result.txt", false);
     rawFile.onreadystatechange = function () {
       if (rawFile.readyState === 4) {
         if (rawFile.status === 200 || rawFile.status == 0) {
-          var allText = rawFile.responseText;
-          alert(allText);
-          console.log(allText);
-          console.log("dsefsdkfksjd");
+          selectedHz = rawFile.responseText;
+          console.log("로컬 텍스트 파일에서 받아온 정답" + selectedHz);
         }
       }
     };
-
+    console.log("dd" + selectedHz);
     rawFile.send(null);
   </script>
   <header>
@@ -40,10 +46,14 @@
   </header>
   <body>
     <div id="stage"></div>
-    <div style="font-size: 30px; margin-top: 10%" class="main-container">
-      <span id="selectlocation"></span>
-      <br />
-      <span id="answer"></span>
+    <div
+      class="timerbox"
+      style="width: 500px; padding-top: 1px; height: 30px; margin-top: 50px"
+    >
+      <div id="question" style="font-size: 15px; color: azure">asdf</div>
+    </div>
+    <div style="font-size: 30px; margin-top: 3%" class="main-container">
+      <span id="selectlocation">선택한 그림은?</span>
     </div>
     <div class="img-container" style="margin-top: 40px">
       <div class="img-items1">
@@ -53,6 +63,16 @@
           width="372"
           height="254"
         />
+        <div
+          id="leftCircle"
+          style="position: absolute; margin-top: -250px; left: 200px"
+        ></div>
+        <!-- <img
+          id="leftCircle"
+          style="position: absolute; left: 230px"
+          width="372"
+          height="254"
+        /> -->
       </div>
 
       <div class="img-items2">
@@ -62,10 +82,37 @@
           width="374"
           height="254"
         />
+        <div
+          id="rightCircle"
+          style="position: absolute; margin-top: -250px; right: 200px"
+        ></div>
+        <!-- <img
+          id="rightCircle"
+          style="position: absolute; right: 230px"
+          width="372"
+          height="254"
+        /> -->
       </div>
     </div>
-    <!-- 이미지 src 셋팅 자바스크립트 코드 -->
+    <div
+      style="
+        position: relative;
+        text-align: center;
+        margin-top: 60px;
+        font-size: 20px;
+        font-weight: 900px;
+      "
+      id="answer"
+    ></div>
+
     <script>
+      if (localStorage.getItem("quesIndex")) {
+        //예전 문제 다시 넣는 로직
+        console.log("인덱스:" + quesIndex);
+        var quesIndex = localStorage.getItem("quesIndex");
+        document.getElementById("question").innerHTML =
+          "Q." + GameQuestionsData.lev1.ques[quesIndex - 1];
+      }
       if (localStorage.getItem("answersrc")) {
         var answersrc = localStorage.getItem("answersrc");
       }
@@ -74,11 +121,13 @@
         var imagesrc = localStorage.getItem("imagesrc");
       }
       console.log(imagesrc);
+
       //정답 알려줌
       if (localStorage.getItem("answerHz")) {
         var answerHz = localStorage.getItem("answerHz");
       }
       console.log(answerHz);
+
       //이미지 태그 넣기
       if (answerHz === "7hz") {
         document.getElementById("7hz").src = answersrc;
@@ -86,6 +135,29 @@
       } else if (answerHz === "13hz") {
         document.getElementById("7hz").src = imagesrc;
         document.getElementById("13hz").src = answersrc;
+      }
+
+      //선택한 그림에 동그라미 그려주는 로직
+      if (selectedHz === "7hz") {
+        // document.getElementById("leftCircle").src = "../image/Circle.png";
+        document.getElementById("leftCircle").innerHTML =
+          '<img src="../image/Circle.png" width="372" height="254"/>';
+        console.log("dsdfsf");
+      } else if (selectedHz === "13hz") {
+        // document.getElementById("rightCircle").src = "../image/Circle.png";
+        document.getElementById("rightCircle").innerHTML =
+          '<img src="../image/Circle.png" width="372" height="254"/>';
+      }
+      //정답인지 아닌지 글씨 넣어주는 로직
+      if (selectedHz === answerHz) {
+        console.log("정답입니다.");
+        document.getElementById("answer").innerHTML =
+          "🎉정답입니다.🎉 <br> 📚집중력이 향상되었습니다.📚";
+        console.log("정답입니다.");
+      } else {
+        document.getElementById("answer").innerHTML =
+          "😭오답입니다.😭 <br> 다시 집중해주세요.";
+        console.log("오답입니다.");
       }
     </script>
   </body>
