@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="../css/normal.css" />
+    <meta charset="utf-8" />
+  </head>
+  <script>
+    function processFile(file) {
+      var reader = new FileReader();
+      reader.onload = function () {
+        output.innerText = reader.result;
+      };
+      reader.readAsText(file, /* optional */ "euc-kr");
+    }
+  </script>
+  <header>
+    <h1
+      class="sixth"
+      style="text-align: center; font-weight: 300"
+      onclick="goHome()"
+    >
+      NeuroFocus
+    </h1>
+  </header>
+  <body>
+    <div id="stage"></div>
+    <div style="font-size: 30px; margin-top: 10%" class="main-container">
+      <span id="selectlocation"></span>
+      <br />
+      <span id="answer"></span>
+    </div>
+    <div class="img-container" style="margin-top: 40px">
+      <div class="img-items1">
+        <img
+          id="7hz"
+          style="position: relative; left: 70px"
+          width="372"
+          height="254"
+        />
+      </div>
+
+      <div class="img-items2">
+        <img
+          id="13hz"
+          style="position: relative; left: -70px"
+          width="374"
+          height="254"
+        />
+      </div>
+    </div>
+    <!-- 이미지 src 셋팅 자바스크립트 코드 -->
+    <script></script>
+  </body>
+</html>

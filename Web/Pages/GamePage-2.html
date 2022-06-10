@@ -21,11 +21,11 @@
 
     //헤더 클릭시 메인으로 돌아감
     const goHome = () => {
-      window.location.href = "./MainPage.html";
+      window.location.href = "./MainPage-1.html";
     };
 
     //// 여기부터는 타이머 설정
-    var time = 5; //기준시간 작성
+    var time = 14; //기준시간 작성
     var min = "";
     var sec = "";
     setInterval;
@@ -39,7 +39,7 @@
       //타임아웃 시
       if (time < 0) {
         clearInterval(x);
-        window.location.href = "./WaitPage.html";
+        window.location.href = "./WaitPage-3.html";
       }
     }, 1000);
   </script>
@@ -80,7 +80,7 @@
     </div>
     <div class="timerbox" style="width: 80px; margin-top: 30px">
       <div style="font-size: 15px; color: azure">남은시간</div>
-      <div style="font-size: 15px" id="timer">0:00</div>
+      <div style="font-size: 15px" id="timer">0:15</div>
     </div>
     <!-- 이미지 src 셋팅 자바스크립트 코드 -->
     <script>

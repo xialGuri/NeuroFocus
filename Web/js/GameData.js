@@ -25,10 +25,3 @@ var GameQuestionsData = {
     ],
   },
 };
-
-// var GameSetData = {
-//   life: 3,
-//   stage: 1,
-//   answerHz: "정답없음",
-//   quesIndex: 0,
-// };

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="../css/normal.css" />
+    <!-- <link rel="stylesheet" href="../css/bootstrap.css" /> -->
+    <meta `charset="utf-8" />
+  </head>
+  <script>
+    const newPage = () => {
+      window.location.href = "./StimulusDesignPage-5.html";
+    };
+
+    //헤더 클릭시 메인으로 돌아감
+    const goHome = () => {
+      window.location.href = "./MainPage-1.html";
+    };
+
+    //// 여기부터는 타이머 설정
+    var time = 10; //기준시간 작성
+    var min = "";
+    var sec = "";
+    setInterval;
+    var x = setInterval(function () {
+      min = parseInt(time / 60);
+      sec = time % 60;
+      timer.classList.remove("preTimer");
+      time--;
+
+      //타임아웃 시
+      if (time < 0) {
+        clearInterval(x);
+        window.location.href = "./ResultPage-7.html";
+      }
+    }, 1000);
+  </script>
+  <header>
+    <h1
+      class="sixth"
+      style="text-align: center; font-weight: 300"
+      onclick="goHome()"
+    >
+      NeuroFocus
+    </h1>
+  </header>
+
+  <body>
+    <div class="box" style="position: relative; margin-top: -60px">
+      <img id="timer" src="../image/loading3.gif" style="width: 200px" />
+    </div>
+    <div
+      style="
+        position: relative;
+        text-align: center;
+        margin-top: -200px;
+        font-size: 20px;
+        font-weight: 200;
+      "
+    >
+      뇌파 분석 중입니다.
+    </div>
+
+    <script>
+      if (localStorage.getItem("answerHz")) {
+        var answerHz = localStorage.getItem("answerHz");
+      }
+      console.log("정답은? " + answerHz);
+      if (localStorage.getItem("quesIndex")) {
+        var quesIndex = localStorage.getItem("quesIndex");
+      }
+      console.log("질문 인덱스는?" + quesIndex);
+      if (localStorage.getItem("stage")) {
+        var stage = localStorage.getItem("stage");
+      }
+      console.log("스테이지는?" + stage);
+    </script>
+  </body>
+</html>
