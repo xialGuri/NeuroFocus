@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="../css/normal.css" />
+    <!-- <link rel="stylesheet" href="../css/bootstrap.css" /> -->
+    <meta `charset="utf-8" />
+  </head>
+  <script>
+    const newPage = () => {
+      window.location.href = "./StimulusDesign.html";
+    };
+
+    //헤더 클릭시 메인으로 돌아감
+    const goHome = () => {
+      window.location.href = "./MainPage.html";
+    };
+
+  </script>
+  <header>
+    <h1 class="sixth" style="text-align: center; font-weight: 300" onclick="goHome()">
+      NeuroFocus
+    </h1>
+  </header>
+
+  <body>
+    <div class="box">
+        <button
+          class="button button--winona button--border-thick button--round-l button--text-upper button--size-s button--text-thick"
+          data-text="측정 시작"
+          onclick="newPage()"
+        >
+          <span>뇌파 측정하기</span>
+        </button>
+      </button>
+    </div>
+    <script>
+      if (localStorage.getItem("answerHz")) {
+        var answerHz = localStorage.getItem("answerHz");
+      }
+      console.log("정답은? " + answerHz);
+      if (localStorage.getItem("quesIndex")) {
+        var quesIndex = localStorage.getItem("quesIndex");
+      }
+      console.log("질문 인덱스는?" + quesIndex);
+      if (localStorage.getItem("stage")) {
+        var stage = localStorage.getItem("stage");
+      }
+      console.log("스테이지는?" + stage);
+      
+    </script>
+  </body>
+</html>
