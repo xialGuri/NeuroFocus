@@ -2,13 +2,14 @@
 <html>
   <head>
     <link rel="stylesheet" href="../css/normal.css" />
+    <link rel="stylesheet" href="../css/bootstrap.css" />
     <meta charset="utf-8" />
     <script src="../js/GameData.js"></script>
   </head>
   <script>
     //헤더 클릭시 메인으로 돌아감
     const goHome = () => {
-      window.location.href = "./MainPage.html";
+      window.location.href = "./MainPage-1.html";
     };
 
     //// 여기부터는 타이머 설정
@@ -26,7 +27,7 @@
       //타임아웃 시
       if (time < 0) {
         clearInterval(x);
-        window.location.href = "./MainPage-1.html";
+        window.location.href = "./LoadingPage-6.html";
       }
     }, 1000);
   </script>

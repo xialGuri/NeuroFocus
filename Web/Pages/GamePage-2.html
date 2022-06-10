@@ -2,6 +2,7 @@
 <html>
   <head>
     <link rel="stylesheet" href="../css/normal.css" />
+    <link rel="stylesheet" href="../css/bootstrap.css" />
     <meta charset="utf-8" />
   </head>
   <script>
@@ -9,6 +10,7 @@
     var quesIndex;
     var answerSelectIndex;
     var answerHz;
+
     function indexSetting() {
       quesIndex = Math.floor(Math.random() * 4 + 1);
       answerSelectIndex = Math.floor(Math.random() * 2);
@@ -112,6 +114,10 @@
       // 문제,정답 데이터 보내기
       localStorage.setItem("quesIndex", quesIndex);
       localStorage.setItem("answerHz", answerHz);
+
+      //이미지 src 보내기
+      localStorage.setItem("answersrc", answersrc);
+      localStorage.setItem("imagesrc", imagesrc);
     </script>
   </body>
 </html>

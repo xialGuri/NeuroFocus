@@ -1,0 +1,2 @@
+1. 서버 실행 
+npx http-server

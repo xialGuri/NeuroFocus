@@ -2,16 +2,32 @@
 <html>
   <head>
     <link rel="stylesheet" href="../css/normal.css" />
+    <link rel="stylesheet" href="../css/bootstrap.css" />
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+    <link rel="icon" href="/favicon.ico" type="image/x-icon" />
     <meta charset="utf-8" />
   </head>
-  <script>
-    function processFile(file) {
-      var reader = new FileReader();
-      reader.onload = function () {
-        output.innerText = reader.result;
-      };
-      reader.readAsText(file, /* optional */ "euc-kr");
-    }
+  <script type="text/javascript">
+    //헤더 클릭시 메인으로 돌아감
+    const goHome = () => {
+      window.location.href = "./MainPage-1.html";
+    };
+
+    //로컬 텍스트 파일 읽는 함수
+    var rawFile = new XMLHttpRequest();
+    rawFile.open("GET", "result.txt", false);
+    rawFile.onreadystatechange = function () {
+      if (rawFile.readyState === 4) {
+        if (rawFile.status === 200 || rawFile.status == 0) {
+          var allText = rawFile.responseText;
+          alert(allText);
+          console.log(allText);
+          console.log("dsefsdkfksjd");
+        }
+      }
+    };
+
+    rawFile.send(null);
   </script>
   <header>
     <h1
@@ -49,6 +65,28 @@
       </div>
     </div>
     <!-- 이미지 src 셋팅 자바스크립트 코드 -->
-    <script></script>
+    <script>
+      if (localStorage.getItem("answersrc")) {
+        var answersrc = localStorage.getItem("answersrc");
+      }
+      console.log(answersrc);
+      if (localStorage.getItem("imagesrc")) {
+        var imagesrc = localStorage.getItem("imagesrc");
+      }
+      console.log(imagesrc);
+      //정답 알려줌
+      if (localStorage.getItem("answerHz")) {
+        var answerHz = localStorage.getItem("answerHz");
+      }
+      console.log(answerHz);
+      //이미지 태그 넣기
+      if (answerHz === "7hz") {
+        document.getElementById("7hz").src = answersrc;
+        document.getElementById("13hz").src = imagesrc;
+      } else if (answerHz === "13hz") {
+        document.getElementById("7hz").src = imagesrc;
+        document.getElementById("13hz").src = answersrc;
+      }
+    </script>
   </body>
 </html>
