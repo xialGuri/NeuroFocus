@@ -1,2 +1,12 @@
-1. 서버 실행 
-npx http-server
+1. 서버 실행
+   npx http-server
+
+2. node js 서버 실행
+   node app
+
+3. 파이 스크립트 실행하기
+<link rel="stylesheet" href="https://pyscript.net/alpha/pyscript.css" />
+<script defer src="https://pyscript.net/alpha/pyscript.js"></script>
+
+4. 파이썬 실행 함수
+   exec(open("main.py").read())
