@@ -1,51 +1,52 @@
 import pandas as pd
 import os
-
+import threading
+import sys
 
 #계산 하는 함수
-def cal():
+def cal(dumpEndPoint, initialTimeEndPoint, TotalEndPoint):
     # 7hz 초기값 평균
-    a = Fp1_FFT.loc[33:43, '6.50Hz':'7.50Hz']
+    a = Fp1_FFT.loc[dumpEndPoint:initialTimeEndPoint, '6.50Hz':'7.50Hz']
     a
 
     sum7_initial = 0
-    for i in range(0, 10):
+    for i in range(0, initialTimeEndPoint - dumpEndPoint):
         for j in range(0, 30):
             sum7_initial = sum7_initial + a.iloc[i, j]
-    avg7_initial = sum7_initial / 300
+    avg7_initial = sum7_initial / ((initialTimeEndPoint - dumpEndPoint) * 30)
     print("7의 초기값")
     print(avg7_initial)
 
     # 13hz 초기값 평균
-    b = Fp1_FFT.loc[33:43, '12.50Hz':'13.50Hz']
+    b = Fp1_FFT.loc[dumpEndPoint:initialTimeEndPoint, '12.50Hz':'13.50Hz']
     b
     sum13_initial = 0
-    for i in range(0, 10):
+    for i in range(0, initialTimeEndPoint - dumpEndPoint):
         for j in range(0, 30):
             sum13_initial = sum13_initial + b.iloc[i, j]
-    avg13_initial = sum13_initial / 300
+    avg13_initial = sum13_initial / ((initialTimeEndPoint - dumpEndPoint) * 30)
     print("13의 초기값")
     print(avg13_initial)
 
     # 7hz 자극 후 평균
-    c = Fp1_FFT.loc[44:64, '6.50Hz':'7.50Hz']  # 자극 후 범위 다시 지정해야함
+    c = Fp1_FFT.loc[initialTimeEndPoint + 1:TotalEndPoint, '6.50Hz':'7.50Hz']
     c
     sum7_after = 0
-    for i in range(0, 20):
+    for i in range(0, TotalEndPoint - (initialTimeEndPoint + 1)):
         for j in range(0, 30):
             sum7_after = sum7_after + c.iloc[i, j]
-    avg7_after = sum7_after / 600
+    avg7_after = sum7_after / ((TotalEndPoint - (initialTimeEndPoint + 1)) * 30)
     print("7의 자극후값")
     print(avg7_after)
 
     # 13hz 자극 후 평균
-    d = Fp1_FFT.loc[46:66, '12.50Hz':'13.50Hz']  # 자극 후 범위 다시 지정해야함
+    d = Fp1_FFT.loc[initialTimeEndPoint + 1:TotalEndPoint, '12.50Hz':'13.50Hz']
     d
     sum13_after = 0
-    for i in range(0, 20):
+    for i in range(0, TotalEndPoint - (initialTimeEndPoint + 1)):
         for j in range(0, 30):
             sum13_after = sum13_after + d.iloc[i, j]
-    avg13_after = sum13_after / 600
+    avg13_after = sum13_after / ((TotalEndPoint - (initialTimeEndPoint + 1)) * 30)
     print("13의 자극후값")
     print(avg13_after)
 
@@ -67,7 +68,7 @@ def cal():
 
     elif (avg7_initial > avg13_after and avg13_initial < avg13_after):
         f = open('./resultㄴ.txt', 'w')
-        print("13ㄴㄴㄴ들어옴")
+        print("13들어옴")
         f.write('13hz입니다.')
         f.close
 
@@ -85,15 +86,15 @@ def cal():
             f.close
 
 
-#정답 텍스트 파일 생성 함수
-def AnswerData(answer):
-    f = open("./Web/result.txt", 'w')
-    if answer == "7hz":
-        data = "7hz"
-    elif answer == "13hz":
-        data = "13hz"
-    f.write(data)
-    f.close()
+# #정답 텍스트 파일 생성 함수
+# def AnswerData(answer):
+#     f = open("./Web/result.txt", 'w')
+#     if answer == "7hz":
+#         data = "7hz"
+#     elif answer == "13hz":
+#         data = "13hz"
+#     f.write(data)
+#     f.close()
 
 #파이썬 메인 파일 시작
 # 파일 경로로 접근해서 파일 열기
@@ -115,19 +116,19 @@ print(file)
 #파이썬 경로 읽기
 Fp1_FFT = pd.read_table(file, sep='\t' , encoding='cp949', float_precision='high')
 
-#자극 시작 시점(행)
+#실제 자극 시작 시점(행)
 startPoint = len(Fp1_FFT)
 
-# 노이즈 값 끝 시점(행)
+# 노이즈 값 끝 시점(행) (초기값 계산 측정 시점)
 dumpEndPoint = len(Fp1_FFT) + 35
 
-# 초기값 끝 시점(행)
+# 초기값 끝 시점(행) (초기값 계산 측정 종료 시점)(자극값 계산 측정 시점)
 initialTimeEndPoint = dumpEndPoint + 10
 
-# 종료 시점(행)
+# 종료 시점(행) (자극값 종료 시점)
 TotalEndPoint = initialTimeEndPoint + 25
 
-#일정 시간 기다림
+#일정 시간 기다림 (로딩중일 때 까지 기다림)
 threading.Timer(80, cal()).start()
 sys.exit(0)
 
