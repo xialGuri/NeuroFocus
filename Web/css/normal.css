@@ -48,22 +48,25 @@ h1.sixth:hover:after {
 .img-items {
   margin: auto;
 }
+
 .img-items1 {
   margin: auto;
 }
+
 .img-items2 {
   margin: auto;
 }
+
 .img-items1-ani {
   margin: auto;
-  animation: blink-effect 0s step-end infinite;
+  animation: blink-effect 0.14285714285s step-end infinite;
 }
-/* 0.14285714285s */
+
 .img-items2-ani {
   margin: auto;
-  animation: blink-effect 0s step-end infinite;
+  animation: blink-effect 0.07692307692s step-end infinite;
 }
-/* 0.07692307692 */
+
 .main-container {
   text-align: center;
   margin-top: 200px;
@@ -135,17 +138,18 @@ h1 {
 /* Button css */
 
 @import url(https://fonts.googleapis.com/css?family=Raleway:200,300,400,500,600);
+
 @font-face {
   font-weight: normal;
   font-style: normal;
   font-family: "codropsicons";
   src: url("../fonts/codropsicons/codropsicons.eot");
-  src: url("../fonts/codropsicons/codropsicons.eot?#iefix")
-      format("embedded-opentype"),
+  src: url("../fonts/codropsicons/codropsicons.eot?#iefix") format("embedded-opentype"),
     url("../fonts/codropsicons/codropsicons.woff") format("woff"),
     url("../fonts/codropsicons/codropsicons.ttf") format("truetype"),
     url("../fonts/codropsicons/codropsicons.svg#codropsicons") format("svg");
 }
+
 .button_container {
   position: absolute;
   display: inline-block;
@@ -163,6 +167,7 @@ h1 {
   -webkit-justify-content: center;
   justify-content: center;
 }
+
 .button {
   float: left;
   min-width: 350px;
@@ -179,10 +184,12 @@ h1 {
   -webkit-backface-visibility: hidden;
   -moz-osx-font-smoothing: grayscale;
 }
+
 .button:focus {
   outline: none;
 }
-.button > span {
+
+.button>span {
   vertical-align: middle;
 }
 
@@ -196,6 +203,7 @@ h1 {
   transition-timing-function: cubic-bezier(0.2, 1, 0.3, 1);
   color: rgb(238, 234, 234);
 }
+
 .button--winona::after {
   content: attr(data-text);
   position: absolute;
@@ -209,38 +217,46 @@ h1 {
   -webkit-transform: translate3d(0, 25%, 0);
   transform: translate3d(0, 25%, 0);
 }
-.button--winona > span {
+
+.button--winona>span {
   display: block;
 }
+
 .button--winona.button--inverted {
   color: #7986cb;
 }
+
 .button--winona.button--inverted:after {
   color: #fff;
 }
+
 .button--winona::after,
-.button--winona > span {
+.button--winona>span {
   padding: 1em 2em;
   -webkit-transition: -webkit-transform 0.3s, opacity 0.3s;
   transition: transform 0.3s, opacity 0.3s;
   -webkit-transition-timing-function: cubic-bezier(0.2, 1, 0.3, 1);
   transition-timing-function: cubic-bezier(0.2, 1, 0.3, 1);
 }
+
 .button--winona:hover {
   /* border-color: #3f51b5; */
   border-color: azure;
   background-color: rgba(63, 81, 181, 0.1);
 }
+
 .button--winona.button--inverted:hover {
   border-color: #21333c;
   background-color: #21333c;
 }
+
 .button--winona:hover::after {
   opacity: 1;
   -webkit-transform: translate3d(0, 0, 0);
   transform: translate3d(0, 0, 0);
 }
-.button--winona:hover > span {
+
+.button--winona:hover>span {
   opacity: 0;
   -webkit-transform: translate3d(0, -25%, 0);
   transform: translate3d(0, -25%, 0);
@@ -250,9 +266,11 @@ h1 {
 .button--border-thick {
   border: 3px solid;
 }
+
 .button--antiman.button--border-thick::before {
   border-width: 3px;
 }
+
 .button--itzel.button--border-thick::before {
   border: 3px solid;
   -webkit-transform: translate3d(0, 100%, 0) translate3d(0, -3px, 0);
@@ -262,19 +280,24 @@ h1 {
 .button--round-l {
   border-radius: 40px;
 }
+
 .button--round-l.button--quidel::after {
   border-radius: 40px;
 }
+
 .button--scanite.button--round-l {
   border-radius: 50%;
 }
+
 .button--text-upper {
   letter-spacing: 2px;
   text-transform: uppercase;
 }
+
 .button--size-s {
   font-size: 14px;
 }
+
 .button--text-thick {
   font-weight: 600;
 }

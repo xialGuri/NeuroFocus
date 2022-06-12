@@ -1,106 +1,116 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <link rel="stylesheet" href="../css/normal.css" />
-    <link rel="stylesheet" href="../css/bootstrap.css" />
-    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
-    <link rel="icon" href="/favicon.ico" type="image/x-icon" />
-    <meta charset="utf-8" />
-    <script src="../js/GameData.js"></script>
-  </head>
+
+<head>
+  <link rel="stylesheet" href="../css/normal.css" />
+  <link rel="stylesheet" href="../css/bootstrap.css" />
+  <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+  <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+  <meta charset="utf-8" />
+  <script src="../js/GameData.js"></script>
+</head>
+<script>
+  //헤더 클릭시 메인으로 돌아감
+  const goHome = () => {
+    window.location.href = "./MainPage-1.html";
+  };
+
+  //// 여기부터는 타이머 설정
+  var time = 69; //기준시간 작성
+  var min = "";
+  var sec = "";
+  setInterval;
+  var x = setInterval(function () {
+    min = parseInt(time / 60);
+    sec = time % 60;
+    timer.classList.remove("preTimer");
+    document.getElementById("timer").innerHTML = min + "  :  " + sec;
+    time--;
+
+    //타임아웃 시
+    if (time < 0) {
+      clearInterval(x);
+      window.location.href = "./LoadingPage-6.html";
+    }
+  }, 1000);
+</script>
+<header>
+  <h1 class="sixth" style="text-align: center; font-weight: 300" onclick="goHome()">
+    NeuroFocus
+  </h1>
+</header>
+
+<body>
+  <div class="timerbox" style="width: 150px; margin-top: 50px;">
+    <div id="stage" style="font-size: 20px; color: black; font-weight: bold"></div>
+  </div>
+  <div class="stimDesign-container">
+    <div style="font-size: 30px; margin-top: 1%; font-size: 25px" class="main-container">
+      <span id="question"></span>
+      <br />
+      해당하는 그림의 위치에 1분 동안
+      <span style="color: red">시선을 집중해주세요. </span>
+    </div>
+    <div class="img-container">
+      <div class="img-items1-ani">
+        <img style="position: relative; left: -130px" src="../image/Red.png" width="200" height="200" />
+      </div>
+
+      <div class="img-items2-ani">
+        <img style="position: relative; left: 130px" src="../image/Blue.png" width="200" height="200" />
+      </div>
+    </div>
+  </div>
+  <div class="timerbox" style="width: 80px; margin-top: 30px">
+    <div style="font-size: 15px; color: azure">남은시간</div>
+    <div style="font-size: 15px" id="timer">1:10</div>
+  </div>
+
+  <!-- 문제 설정 분석 -->
   <script>
-    //헤더 클릭시 메인으로 돌아감
-    const goHome = () => {
-      window.location.href = "./MainPage-1.html";
-    };
+    if (localStorage.getItem("stage")) {
+      var stage = localStorage.getItem("stage");
+    }
+    if (localStorage.getItem("life")) {
+      var stage = localStorage.getItem("life");
+    }
 
-    //// 여기부터는 타이머 설정
-    var time = 2; //기준시간 작성
-    var min = "";
-    var sec = "";
-    setInterval;
-    var x = setInterval(function () {
-      min = parseInt(time / 60);
-      sec = time % 60;
-      timer.classList.remove("preTimer");
-      document.getElementById("timer").innerHTML = min + "  :  " + sec;
-      time--;
 
-      //타임아웃 시
-      if (time < 0) {
-        clearInterval(x);
-        window.location.href = "./LoadingPage-6.html";
-      }
-    }, 1000);
+    if (stage === "1") {
+      document.getElementById("stage").innerHTML =
+        "STAGE 1";
+    }
+    else if (stage === "2") {
+      document.getElementById("stage").innerHTML =
+        "STAGE 2";
+    }
+    else if (stage === "3") {
+      document.getElementById("stage").innerHTML =
+        "STAGE 3";
+    }
+
+    if (localStorage.getItem("answerHz")) {
+      var answerHz = localStorage.getItem("answerHz");
+    }
+    console.log("정답은? " + answerHz);
+    if (localStorage.getItem("quesIndex")) {
+      var quesIndex = localStorage.getItem("quesIndex");
+    }
+    console.log("질문 인덱스는?" + quesIndex);
+    if (localStorage.getItem("stage")) {
+      var stage = localStorage.getItem("stage");
+    }
+    console.log("스테이지는?" + stage);
+    console.log("문제는?" + GameQuestionsData.lev1.ques[quesIndex - 1]);
+    if (stage === "1") {
+      var question = GameQuestionsData.lev1.ques[quesIndex - 1];
+    } else if (stage === "2") {
+      var question = GameQuestionsData.lev2.ques[quesIndex - 1];
+    } else if (stage === "3") {
+      var question = GameQuestionsData.lev3.ques[quesIndex - 1];
+    }
+    document.getElementById("question").innerHTML = "Q." + question;
   </script>
-  <header>
-    <h1
-      class="sixth"
-      style="text-align: center; font-weight: 300"
-      onclick="goHome()"
-    >
-      NeuroFocus
-    </h1>
-  </header>
-  <body>
-    <div class="stimDesign-container">
-      <div
-        style="font-size: 30px; margin-top: 10%; font-size: 25px"
-        class="main-container"
-      >
-        <span id="question"></span>
-        <br />
-        해당하는 그림의 위치에 1분 동안
-        <span style="color: red">시선을 집중해주세요. </span>
-      </div>
-      <div class="img-container">
-        <div class="img-items1-ani">
-          <img
-            style="position: relative; left: -130px"
-            src="../image/Red.png"
-            width="200"
-            height="200"
-          />
-        </div>
+</body>
 
-        <div class="img-items2-ani">
-          <img
-            style="position: relative; left: 130px"
-            src="../image/Blue.png"
-            width="200"
-            height="200"
-          />
-        </div>
-      </div>
-    </div>
-    <div class="timerbox" style="width: 80px; margin-top: 30px">
-      <div style="font-size: 15px; color: azure">남은시간</div>
-      <div style="font-size: 15px" id="timer">1:10</div>
-    </div>
-
-    <!-- 문제 설정 분석 -->
-    <script>
-      if (localStorage.getItem("answerHz")) {
-        var answerHz = localStorage.getItem("answerHz");
-      }
-      console.log("정답은? " + answerHz);
-      if (localStorage.getItem("quesIndex")) {
-        var quesIndex = localStorage.getItem("quesIndex");
-      }
-      console.log("질문 인덱스는?" + quesIndex);
-      if (localStorage.getItem("stage")) {
-        var stage = localStorage.getItem("stage");
-      }
-      console.log("스테이지는?" + stage);
-      console.log("문제는?" + GameQuestionsData.lev1.ques[quesIndex - 1]);
-      if (stage === "1") {
-        var question = GameQuestionsData.lev1.ques[quesIndex - 1];
-      } else if (stage === "2") {
-        var question = GameQuestionsData.lev2.ques[quesIndex - 1];
-      } else if (stage === "3") {
-        var question = GameQuestionsData.lev3.ques[quesIndex - 1];
-      }
-      document.getElementById("question").innerHTML = "Q." + question;
-    </script>
-  </body>
 </html>

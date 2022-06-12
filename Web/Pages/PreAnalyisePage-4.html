@@ -1,75 +1,51 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8" />
-    <link rel="stylesheet" href="../css/normal.css" />
-    <link rel="stylesheet" href="../css/bootstrap.css" />
-    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
-    <link rel="icon" href="/favicon.ico" type="image/x-icon" />
-    <script defer src="https://pyscript.net/alpha/pyscript.js"></script>
-    <py-env> 
-        - paths: 
-            - main2.py 
-    </py-env>
-  </head>
-  <script>
-    //헤더 클릭시 메인으로 돌아감
-    const goHome = () => {
-      window.location.href = "./MainPage-1.html";
-    };
 
-    const newPage = () => {
-      window.location.href = "./StimulusDesignPage-5.html";
-    };
+<head>
+  <meta charset="utf-8" />
+  <link rel="stylesheet" href="../css/normal.css" />
+  <link rel="stylesheet" href="../css/bootstrap.css" />
+  <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+  <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+</head>
+<script>
+  //헤더 클릭시 메인으로 돌아감
+  const goHome = () => {
+    window.location.href = "./MainPage-1.html";
+  };
+
+  const newPage = () => {
+    window.location.href = "./StimulusDesignPage-5.html";
+  };
+</script>
+<header>
+  <h1 class="sixth" style="text-align: center; font-weight: 300" onclick="goHome()">
+    NeuroFocus
+  </h1>
+</header>
+
+<body>
+  <div class="box" style="margin-top: 90px">
+    <button
+      class="button button--winona button--border-thick button--round-l button--text-upper button--size-s button--text-thick"
+      data-text="시작 하기" onclick="newPage()">
+      <span>문제 맞춰보기</span>
+    </button>
+  </div>
+  <script type="module">
+    if (localStorage.getItem("answerHz")) {
+      var answerHz = localStorage.getItem("answerHz");
+    }
+    console.log("정답은? " + answerHz);
+    if (localStorage.getItem("quesIndex")) {
+      var quesIndex = localStorage.getItem("quesIndex");
+    }
+    console.log("질문 인덱스는?" + quesIndex);
+    if (localStorage.getItem("stage")) {
+      var stage = localStorage.getItem("stage");
+    }
+    console.log("스테이지는?" + stage);
   </script>
-  <header>
-    <h1
-      class="sixth"
-      style="text-align: center; font-weight: 300"
-      onclick="goHome()"
-    >
-      NeuroFocus
-    </h1>
-  </header>
+</body>
 
-  <body>
-    <py-script src="./main2.py"></py-script>
-    <py-script> 
-          import main2
-
-          main2.openFile()
-    </py-script>
-    <div class="box" style="margin-top: 90px">
-      <button
-        class="button button--winona button--border-thick button--round-l button--text-upper button--size-s button--text-thick"
-        data-text="시작 하기"
-        onclick="newPage()"
-      >
-        <span>문제 맞춰보기</span>
-      </button>
-      
-      <button id="caculateButton" pys-onClick="openFile">
-        dd
-      </button>
-    </div>
-    <!-- <script
-      src="http://code.jquery.com/jquery-3.3.1.min.js"
-      integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-      crossorigin="anonymous"
-    ></script> -->
-    <script type="module">
-      if (localStorage.getItem("answerHz")) {
-        var answerHz = localStorage.getItem("answerHz");
-      }
-      console.log("정답은? " + answerHz);
-      if (localStorage.getItem("quesIndex")) {
-        var quesIndex = localStorage.getItem("quesIndex");
-      }
-      console.log("질문 인덱스는?" + quesIndex);
-      if (localStorage.getItem("stage")) {
-        var stage = localStorage.getItem("stage");
-      }
-      console.log("스테이지는?" + stage);
-    </script>
-  </body>
 </html>
