@@ -1,201 +1,184 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <link rel="stylesheet" href="../css/normal.css" />
-    <link rel="stylesheet" href="../css/bootstrap.css" />
-    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
-    <link rel="icon" href="/favicon.ico" type="image/x-icon" />
-    <script src="../js/GameData.js"></script>
-    <meta charset="utf-8" />
-  </head>
-  <script type="text/javascript">
-    //페이지 조정
-    const goGame = () => {
-      window.location.href = "./GamePage-2.html";
-    };
-    //헤더 클릭시 메인으로 돌아감
-    const goHome = () => {
-      window.location.href = "./MainPage-1.html";
-    };
 
-    //로컬 텍스트 파일(데이터 분석 결과 나옴) 읽는 함수
-    var selectedHz;
-    var rawFile = new XMLHttpRequest();
-    rawFile.open("GET", "result.txt", false);
-    rawFile.onreadystatechange = function () {
-      if (rawFile.readyState === 4) {
-        if (rawFile.status === 200 || rawFile.status == 0) {
-          selectedHz = rawFile.responseText;
-          console.log("로컬 텍스트 파일에서 받아온 정답" + selectedHz);
-        }
+<head>
+  <link rel="stylesheet" href="../css/normal.css" />
+  <link rel="stylesheet" href="../css/bootstrap.css" />
+  <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+  <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+  <script src="../js/GameData.js"></script>
+  <meta charset="utf-8" />
+</head>
+<script type="text/javascript">
+  //페이지 조정
+  const goGame = () => {
+    window.location.href = "./GamePage-2.html";
+  };
+  //헤더 클릭시 메인으로 돌아감
+  const goHome = () => {
+    window.location.href = "./MainPage-1.html";
+  };
+
+  //로컬 텍스트 파일(데이터 분석 결과 나옴) 읽는 함수
+  var selectedHz;
+  var rawFile = new XMLHttpRequest();
+  rawFile.open("GET", "result.txt", false);
+  rawFile.onreadystatechange = function () {
+    if (rawFile.readyState === 4) {
+      if (rawFile.status === 200 || rawFile.status == 0) {
+        selectedHz = rawFile.responseText;
+        console.log("로컬 텍스트 파일에서 받아온 정답" + selectedHz);
       }
-    };
-    console.log("dd" + selectedHz);
-    rawFile.send(null);
-  </script>
-  <header>
-    <h1
-      class="sixth"
-      style="text-align: center; font-weight: 300"
-      onclick="goHome()"
-    >
-      NeuroFocus
-    </h1>
-  </header>
-  <body>
-    <div
-      class="timerbox"
-      style="width: 400px; padding-top: 1px; height: 70px; margin-top: 50px"
-    >
-      <div id="stage" style="font-size: 15px; color: azure; font-weight: bold">
-        s
-      </div>
-      <div id="question" style="font-size: 15px; color: azure">asdf</div>
-    </div>
-    <div style="font-size: 30px; margin-top: 3%" class="main-container">
-      <span id="selectlocation">선택한 그림은?</span>
-    </div>
-    <div class="img-container" style="margin-top: 40px">
-      <div class="img-items1">
-        <img
-          id="7hz"
-          style="position: relative; left: 70px"
-          width="372"
-          height="254"
-        />
-        <div
-          id="leftCircle"
-          style="position: absolute; margin-top: -250px; left: 230px"
-        ></div>
-      </div>
+    }
+  };
+  console.log("dd" + selectedHz);
+  rawFile.send(null);
+</script>
+<header>
+  <h1 class="sixth" style="text-align: center; font-weight: 300" onclick="goHome()">
+    NeuroFocus
+  </h1>
+</header>
 
-      <div class="img-items2">
-        <img
-          id="13hz"
-          style="position: relative; left: -70px"
-          width="374"
-          height="254"
-        />
-        <div
-          id="rightCircle"
-          style="position: absolute; margin-top: -250px; right: 200px"
-        ></div>
-      </div>
+<body>
+  <div class="timerbox" style="width: 150px; margin-top: 50px;">
+    <div id="stage" style="font-size: 20px; color: black; font-weight: bold"></div>
+  </div>
+  <div class="timerbox" style="width: 400px; padding-top: 1px; height: 25px; margin-top: 15px">
+    <div id="question" style="font-size: 15px; color: azure"></div>
+  </div>
+  <div style="font-size: 30px; margin-top: 1%" class="main-container">
+    <span id="selectlocation">선택한 그림은?</span>
+  </div>
+  <div class="img-container" style="margin-top: 30px">
+    <div class="img-items1">
+      <img id="7hz" style="position: relative; left: 70px" width="372" height="254" />
+      <div id="leftCircle" style="position: absolute; margin-top: -250px; left: 230px"></div>
     </div>
-    <div
-      style="
+
+    <div class="img-items2">
+      <img id="13hz" style="position: relative; left: -70px" width="374" height="254" />
+      <div id="rightCircle" style="position: absolute; margin-top: -250px; right: 200px"></div>
+    </div>
+  </div>
+  <div style="
         position: relative;
         text-align: center;
         margin-top: 30px;
         font-size: 20px;
         font-weight: 900px;
-      "
-      id="answer"
-    ></div>
-    <div class="box" style="margin-top: -200px">
-      <button
-        id="gameSetButton"
-        class="button button--winona button--border-thick button--round-l button--text-upper button--size-s button--text-thick"
-        data-text="시작하기"
-        onclick="newPage()"
-      >
-        <span id="buttonType"></span>
-      </button>
-    </div>
-    <script>
+      " id="answer"></div>
+  <div class="box" style="margin-top: -200px">
+    <button id="gameSetButton"
+      class="button button--winona button--border-thick button--round-l button--text-upper button--size-s button--text-thick"
+      data-text="시작하기" onclick="newPage()">
+      <span id="buttonType"></span>
+    </button>
+  </div>
+  <script>
+    if (localStorage.getItem("stage")) {
+      var stage = localStorage.getItem("stage");
+    }
+    if (stage === "1") {
       document.getElementById("stage").innerHTML =
-        "목숨값:" +
-        localStorage.getItem("life") +
-        "<br>" +
-        "Stage" +
-        localStorage.getItem("stage");
-      if (localStorage.getItem("quesIndex")) {
-        //예전 문제 다시 넣는 로직
-        console.log("인덱스:" + quesIndex);
-        var quesIndex = localStorage.getItem("quesIndex");
-        document.getElementById("question").innerHTML =
-          "Q." + GameQuestionsData.lev1.ques[quesIndex - 1];
-      }
-      if (localStorage.getItem("answersrc")) {
-        var answersrc = localStorage.getItem("answersrc");
-      }
-      console.log(answersrc);
-      if (localStorage.getItem("imagesrc")) {
-        var imagesrc = localStorage.getItem("imagesrc");
-      }
-      console.log(imagesrc);
+        "STAGE 1";
+    }
+    else if (stage === "2") {
+      document.getElementById("stage").innerHTML =
+        "STAGE 2";
+    }
+    else if (stage === "3") {
+      document.getElementById("stage").innerHTML =
+        "STAGE 3";
+    }
+    if (localStorage.getItem("quesIndex")) {
+      //예전 문제 다시 넣는 로직
+      console.log("인덱스:" + quesIndex);
+      var quesIndex = localStorage.getItem("quesIndex");
+      document.getElementById("question").innerHTML =
+        "Q." + GameQuestionsData.lev1.ques[quesIndex - 1];
+    }
+    if (localStorage.getItem("answersrc")) {
+      var answersrc = localStorage.getItem("answersrc");
+    }
+    console.log(answersrc);
+    if (localStorage.getItem("imagesrc")) {
+      var imagesrc = localStorage.getItem("imagesrc");
+    }
+    console.log(imagesrc);
 
-      //정답 알려줌
-      if (localStorage.getItem("answerHz")) {
-        var answerHz = localStorage.getItem("answerHz");
-      }
-      console.log(answerHz);
+    //정답 알려줌
+    if (localStorage.getItem("answerHz")) {
+      var answerHz = localStorage.getItem("answerHz");
+    }
+    console.log(answerHz);
 
-      //이미지 태그 넣기
-      if (answerHz === "7hz") {
-        document.getElementById("7hz").src = answersrc;
-        document.getElementById("13hz").src = imagesrc;
-      } else if (answerHz === "13hz") {
-        document.getElementById("7hz").src = imagesrc;
-        document.getElementById("13hz").src = answersrc;
-      }
+    //이미지 태그 넣기
+    if (answerHz === "7hz") {
+      document.getElementById("7hz").src = answersrc;
+      document.getElementById("13hz").src = imagesrc;
+    } else if (answerHz === "13hz") {
+      document.getElementById("7hz").src = imagesrc;
+      document.getElementById("13hz").src = answersrc;
+    }
 
-      //선택한 그림에 동그라미 그려주는 로직
-      if (selectedHz === "7hz") {
-        // document.getElementById("leftCircle").src = "../image/Circle.png";
-        document.getElementById("leftCircle").innerHTML =
-          '<img src="../image/Circle.png" width="372" height="254"/>';
-        console.log("dsdfsf");
-      } else if (selectedHz === "13hz") {
-        // document.getElementById("rightCircle").src = "../image/Circle.png";
-        document.getElementById("rightCircle").innerHTML =
-          '<img src="../image/Circle.png" width="372" height="254"/>';
-      }
-      //정답인지 아닌지 글씨 넣어주는 로직
-      if (selectedHz === answerHz) {
-        console.log("정답입니다.");
-        if (localStorage.getItem("stage") >= 3) {
-          document.getElementById("answer").innerHTML =
-            "🎉  정답입니다. 모든 스테이지를 통과하였습니다. 🎉 <br> 당신을 집중력의 신으로 임명합니다.!!!";
-          document.getElementById("buttonType").innerHTML = "홈으로 이동";
-          var button = document.getElementById("gameSetButton");
-          button.setAttribute("onclick", "goHome()");
-        } else {
-          document.getElementById("answer").innerHTML =
-            "🎉정답입니다.🎉 <br> 📚집중력이 향상되었습니다.📚";
-          document.getElementById("buttonType").innerHTML =
-            "다음 스테이지로 이동";
-          //스테이지 업그레이드
-          localStorage.setItem(
-            "stage",
-            parseInt(localStorage.getItem("stage")) + 1
-          );
-          var button = document.getElementById("gameSetButton");
-          button.setAttribute("onclick", "goGame()");
-        }
+    //선택한 그림에 동그라미 그려주는 로직
+    if (selectedHz === "7hz") {
+      // document.getElementById("leftCircle").src = "../image/Circle.png";
+      document.getElementById("leftCircle").innerHTML =
+        '<img src="../image/Circle.png" width="372" height="254"/>';
+      console.log("dsdfsf");
+    } else if (selectedHz === "13hz") {
+      // document.getElementById("rightCircle").src = "../image/Circle.png";
+      document.getElementById("rightCircle").innerHTML =
+        '<img src="../image/Circle.png" width="372" height="254"/>';
+    }
+    //정답인지 아닌지 글씨 넣어주는 로직
+    if (selectedHz === answerHz) {
+      console.log("정답입니다.");
+      if (localStorage.getItem("stage") >= 3) {
+        document.getElementById("answer").innerHTML =
+          "🎉  정답입니다. 모든 스테이지를 통과하였습니다. 🎉 <br> 당신을 집중력의 신으로 임명합니다.!!!";
+        document.getElementById("buttonType").innerHTML = "홈으로 이동";
+        var button = document.getElementById("gameSetButton");
+        button.setAttribute("onclick", "goHome()");
       } else {
-        console.log("오답입니다.");
-        if (localStorage.getItem("life") !== 0) {
-          document.getElementById("answer").innerHTML =
-            "😭오답입니다.😭 <br> 다시 도전하세요.";
-          document.getElementById("buttonType").innerHTML =
-            "해당 스테이지 재도전";
-          //목숨 차감
-          localStorage.setItem(
-            "life",
-            parseInt(localStorage.getItem("life")) - 1
-          );
-          var button = document.getElementById("gameSetButton");
-          button.setAttribute("onclick", "goGame()");
-        } else {
-          document.getElementById("answer").innerHTML =
-            "목숨이 0 입니다. <br> GAME OVER";
-          document.getElementById("buttonType").innerHTML = "홈으로 가기";
-          var button = document.getElementById("gameSetButton");
-          button.setAttribute("onclick", "goHome()");
-        }
+        document.getElementById("answer").innerHTML =
+          "🎉정답입니다.🎉 <br> 📚집중력이 향상되었습니다.📚";
+        document.getElementById("buttonType").innerHTML =
+          "다음 스테이지로 이동";
+        //스테이지 업그레이드
+        localStorage.setItem(
+          "stage",
+          parseInt(localStorage.getItem("stage")) + 1
+        );
+        var button = document.getElementById("gameSetButton");
+        button.setAttribute("onclick", "goGame()");
       }
-      console.log(parseInt(localStorage.getItem("stage")) + 1);
-    </script>
-  </body>
+    } else {
+      console.log("오답입니다.");
+      if (localStorage.getItem("life") !== 0) {
+        document.getElementById("answer").innerHTML =
+          "😭오답입니다.😭 <br> 다시 도전하세요.";
+        document.getElementById("buttonType").innerHTML =
+          "해당 스테이지 재도전";
+        //목숨 차감
+        localStorage.setItem(
+          "life",
+          parseInt(localStorage.getItem("life")) - 1
+        );
+        var button = document.getElementById("gameSetButton");
+        button.setAttribute("onclick", "goGame()");
+      } else {
+        document.getElementById("answer").innerHTML =
+          "목숨이 0 입니다. <br> GAME OVER";
+        document.getElementById("buttonType").innerHTML = "홈으로 가기";
+        var button = document.getElementById("gameSetButton");
+        button.setAttribute("onclick", "goHome()");
+      }
+    }
+    console.log(parseInt(localStorage.getItem("stage")) + 1);
+  </script>
+</body>
+
 </html>
