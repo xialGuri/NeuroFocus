@@ -1,5 +1,6 @@
 import pandas as pd
 import os
+import random
 import threading
 from time import sleep
 import sys
@@ -69,16 +70,19 @@ def cal(dumpEndPoint, initialTimeEndPoint, TotalEndPoint):
     print("13의 차이값")
     print(diff13)
 
+    #파일명(랜덤 숫자 주기 함수) 선택 
+    randomnum = random.randint(0,10000)
+    filename = 'result'+ str(randomnum) +'.txt';
     # 차잇값에 따른 결과 처리
     # 결과 처리(텍스트 파일 띄우기)
     if (avg7_initial < avg13_after and avg13_initial > avg13_after):
-        f = open('../Web/Pages/result.txt', 'w')
+        f = open('../Web/Pages/'+filename, 'w')
         print("7들어옴")
         f.write('7hz')
         f.close
 
     elif (avg7_initial > avg13_after and avg13_initial < avg13_after):
-        f = open('../Web/Pages/result.txt', 'w')
+        f = open('../Web/Pages/'+filename, 'w')
         print("13들어옴")
         f.write('13hz')
         f.close
@@ -87,12 +91,12 @@ def cal(dumpEndPoint, initialTimeEndPoint, TotalEndPoint):
         print("둘다 오르는경우나 떨어진 경우들어옴")
         if (diff7 > diff13):
             print("둘7들어옴")
-            f = open('../Web/Pages/result.txt', 'w')
+            f = open('../Web/Pages/'+filename, 'w')
             f.write('7hz')
             f.close
         elif (diff7 < diff13):
             print("둘13들어옴")
-            f = open('../Web/Pages/result.txt', 'w')
+            f = open('../Web/Pages/'+filename, 'w')
             f.write('13hz')
             f.close
 
@@ -121,7 +125,7 @@ file = real_path + file_list2[1]
 print(file)
 
 #현재 경로(맥)
-# /Users/nadonghyeon/NeuroFocusData/Mave/2022-06-11_오후 3_56/Fp2_FFT.txt
+# /Users/nadonghyeon/NeuroFocusData/Mave/2022-06-11_오후 3_56/Fp2_FFT.txt
 #윈도우
 #C:/MAVE_RawData/2022-06-11_오후 3_56/Fp1_FFT.txt
 
@@ -130,7 +134,7 @@ Fp1_FFT = pd.read_table(file, sep='\t', encoding='cp949', float_precision='high'
 
 #실제 자극 시작 시점(행)
 startPoint = len(Fp1_FFT) - 2
-#startPoint = 73
+# startPoint = 0
 
 print("시작점")
 print(startPoint)
@@ -166,4 +170,3 @@ print(TotalEndPoint)
 cal(dumpEndPoint, initialTimeEndPoint, TotalEndPoint)
 # sys.exit("뇌파 분석을 종료합니다.")
 # os.system('pause')
-
