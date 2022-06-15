@@ -129,7 +129,7 @@ print(file)
 #윈도우
 #C:/MAVE_RawData/2022-06-11_오후 3_56/Fp1_FFT.txt
 
-#파이썬 경로 읽기
+#테이블 생성
 Fp1_FFT = pd.read_table(file, sep='\t', encoding='cp949', float_precision='high')
 
 #실제 자극 시작 시점(행)
@@ -161,12 +161,7 @@ sleep(75)
 
 #일정 시간 기다림 (로딩중일 때 까지 기다림)
 # threading.Timer(80, cal(dumpEndPoint,initialTimeEndPoint,TotalEndPoint)).start()
-print("초기값 계산 측정2")
-print(dumpEndPoint)
-print("자극값 계산 시점2")
-print(initialTimeEndPoint)
-print("자극값 종료2")
-print(TotalEndPoint)
+
 cal(dumpEndPoint, initialTimeEndPoint, TotalEndPoint)
 # sys.exit("뇌파 분석을 종료합니다.")
 # os.system('pause')

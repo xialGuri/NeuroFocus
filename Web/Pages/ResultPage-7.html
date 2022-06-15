@@ -171,12 +171,23 @@
       document.getElementById("stage").innerHTML =
         "STAGE 3";
     }
+
     if (localStorage.getItem("quesIndex")) {
       //예전 문제 다시 넣는 로직
       console.log("인덱스:" + quesIndex);
       var quesIndex = localStorage.getItem("quesIndex");
-      document.getElementById("question").innerHTML =
-        "Q." + GameQuestionsData.lev1.ques[quesIndex - 1];
+      if (stage === "1") {
+        document.getElementById("question").innerHTML =
+          "Q." + GameQuestionsData.lev1.ques[quesIndex - 1];
+      }
+      else if (stage === "2") {
+        document.getElementById("question").innerHTML =
+          "Q." + GameQuestionsData.lev2.ques[quesIndex - 1];
+      }
+      else if (stage === "3") {
+        document.getElementById("question").innerHTML =
+          "Q." + GameQuestionsData.lev3.ques[quesIndex - 1];
+      }
     }
     if (localStorage.getItem("answersrc")) {
       var answersrc = localStorage.getItem("answersrc");
