@@ -1,35 +1,31 @@
 # NeuroFocus
-SSVEP BCI 뇌파를 이용한 아동 집중 증진 게임 입니다.
 
-MAVE 뇌파 분석 기계로 뇌파 신호를 받아왔으며 
-
-받아온 신호에 대한 데이터는 파이썬으로 분석하여 아이(유저)의 집중도를 판단하였습니다.
-
-또한 웹 서비스는 바닐라 JS와 CSS, HTML로 구현하였습니다.
+This is a concentration-enhancing game for children using SSVEP BCI brainwave technology.
+We received brainwave signals through the MAVE brainwave analysis machine.
+The data received was analyzed using Python to assess the child's (user's) level of concentration.
+Additionally, the web service was implemented using vanilla JS, CSS, and HTML.
 
 
-# 구조
-## 프론트 
+# Structure
+## Frontend
 ### Web: Javascript, HTML, CSS
 
 
-* Pages: 게임 화면들이 모여있는 폴더입니다. - 뒤에 있는 번호 순대로 플로우가 진행됩니다.
+* Pages: This is a folder containing game screens - the flow progresses in the order of the numbers at the end.
 
-MainPage-1: 메인 페이지 입니다.
-GamePage-2: 게임 시작 페이지 입니다. 이 페이지에서 그림이 출력됩니다.
-WaitPage-3: 휴식 페이지입니다. 
-PreAnalyisePage-4: 분석 시작 전 페이지 입니다. 
-StimulusDesignPage-5: 자극 디자인이 제시되는 페이지입니다. 이때 문제 또한 제시됩니다.
-LoadingPage-6: 뇌파를 분석하는 시점에 나오는 로딩 페이지입니다.
-ResultPage-7: 선택한 그림을 알려주고, 정답을 알려주는 페이지 입니다.
+* MainPage-1: Main page.
+* GamePage-2: Game start page. Images are displayed on this page.
+* WaitPage-3: Relaxation page.
+* PreAnalyisePage-4: Page before starting the analysis. 
+* StimulusDesignPage-5: This is the page where the stimulus design is displayed. It's when the problem is presented.
+* LoadingPage-6: This is the loading page that appears during brainwave analysis.
+* ResultPage-7: This is the page where the selected picture is revealed and the correct answer is provided.
+* sound: This is the page with the alarm sound.
 
-* sound: 알람 소리가 들어있는 페이지 입니다.
+## Data Analysis
+### Implemented in Python.
 
-## 데이터 분석 
-### DataAnalyise: 파이썬으로 구현.
+* SignalProcessing.py: This is the Python code file for analyzing actual brainwave data.
 
-* SignalProcessing.py: 실제 뇌파 데이터를 분석을 위한 파이썬 코드 파일입니다.
-
-* signalProcessing.exe: 사용자가 게임을 진행하면서 뇌파 분석을 위해 실행시키는 실행 파일입니다. SignalProcessing.py을 실행 파일로 변환한 것이며,
-파일이 실행되면 75초간 충분한 데이터 수집까지 기다린후 75초 이후 어떤 주파수를 보고있었는지 파악해주는 계산 함수가 실행이되고, 판단한 헤르츠를 텍스트 파일의 형태로 저장합니다. ex) 7hz 집중했다고 판단: 7hz, 13hz 집중했다고 판단: 13hz  
-
+* signalProcessing.exe: 
+This is the executable file that runs SignalProcessing.py for analyzing brainwave data while the user progresses through the game. When the file is executed, it waits for sufficient data collection for 75 seconds. After that, a calculation function is executed to determine which frequency the user was focusing on during the last 75 seconds. The determined frequencies are then saved in a text file format. For example, if it determines that the user was focusing at 7Hz, it saves "7Hz" in the text file, and if it determines the user was focusing at 13Hz, it saves "13Hz" in the text file.
