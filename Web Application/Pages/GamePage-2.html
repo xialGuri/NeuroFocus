@@ -9,7 +9,7 @@
   <meta charset="utf-8" />
 </head>
 <script>
-  // 인덱스 셋팅 함수
+  // Index setting function
   var quesIndex;
   var answerSelectIndex;
   var answerHz;
@@ -24,13 +24,13 @@
     }
   }
 
-  //헤더 클릭시 메인으로 돌아감
+  // Go to main page when header is clicked
   const goHome = () => {
     window.location.href = "./MainPage-1.html";
   };
 
-  //// 여기부터는 타이머 설정
-  var time = 14; //기준시간 작성
+  // Timer setup
+  var time = 14; // Set time limit
   var min = "";
   var sec = "";
   setInterval;
@@ -41,7 +41,7 @@
     document.getElementById("timer").innerHTML = min + "  :  " + sec;
     time--;
 
-    //타임아웃 시
+    // On timeout
     if (time < 0) {
       clearInterval(x);
       window.location.href = "./WaitPage-3.html";
@@ -63,9 +63,9 @@
   </div>
 
   <div style="font-size: 30px; margin-top: 1%" class="main-container">
-    두 그림의 틀린 부분을 찾아서 특징을 기억하세요.
+    Find the differences between the two pictures and remember the details.
     <br />
-    시간은 15초 입니다.
+    You have 15 seconds.
   </div>
   <div class="img-container" style="margin-top: 40px">
     <div class="img-items1">
@@ -77,10 +77,10 @@
     </div>
   </div>
   <div class="timerbox" style="width: 80px; margin-top: 30px">
-    <div style="font-size: 15px; color: azure">남은시간</div>
+    <div style="font-size: 15px; color: azure">Time Remaining</div>
     <div style="font-size: 15px" id="timer">0:15</div>
   </div>
-  <!-- 이미지 src 셋팅 자바스크립트 코드 -->
+  <!-- JavaScript code to set image src -->
   <script>
 
     if (localStorage.getItem("life")) {
@@ -134,15 +134,15 @@
       document.getElementById("13hz").src = answersrc;
     }
 
-    // 문제,정답 데이터 보내기
+    // Send question and answer data
     localStorage.setItem("quesIndex", quesIndex);
     localStorage.setItem("answerHz", answerHz);
 
-    //이미지 src 보내기
+    // Send image src
     localStorage.setItem("answersrc", answersrc);
     localStorage.setItem("imagesrc", imagesrc);
-    console.log("현재 스테이지는? " + localStorage.getItem("stage"));
-    console.log("현재 목숨은? " + localStorage.getItem("life"));
+    console.log("Current stage is: " + localStorage.getItem("stage"));
+    console.log("Current life is: " + localStorage.getItem("life"));
   </script>
 </body>
 

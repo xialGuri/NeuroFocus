@@ -9,7 +9,7 @@
   <link rel="icon" href="/favicon.ico" type="image/x-icon" />
 </head>
 <script>
-  //헤더 클릭시 메인으로 돌아감
+  // Go to the main page when the header is clicked
   const goHome = () => {
     window.location.href = "./MainPage-1.html";
   };
@@ -28,23 +28,23 @@
   <div class="box" style="margin-top: 90px">
     <button
       class="button button--winona button--border-thick button--round-l button--text-upper button--size-s button--text-thick"
-      data-text="시작 하기" onclick="newPage()">
-      <span>문제 맞춰보기</span>
+      data-text="Start" onclick="newPage()">
+      <span>Test Your Knowledge</span>
     </button>
   </div>
   <script type="module">
     if (localStorage.getItem("answerHz")) {
       var answerHz = localStorage.getItem("answerHz");
     }
-    console.log("정답은? " + answerHz);
+    console.log("The answer is? " + answerHz);
     if (localStorage.getItem("quesIndex")) {
       var quesIndex = localStorage.getItem("quesIndex");
     }
-    console.log("질문 인덱스는?" + quesIndex);
+    console.log("Question index is? " + quesIndex);
     if (localStorage.getItem("stage")) {
       var stage = localStorage.getItem("stage");
     }
-    console.log("스테이지는?" + stage);
+    console.log("Stage is? " + stage);
   </script>
 </body>
 
